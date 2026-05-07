@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arcadium Labs | Premium Mobile Games</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:#040816;
+      background-image:
+      radial-gradient(circle at top right, rgba(0,255,255,0.12), transparent 25%),
+      radial-gradient(circle at bottom left, rgba(140,0,255,0.16), transparent 25%),
+      linear-gradient(180deg,#03050f,#070d1f,#02040d);
+      color: #ffffff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      width: 100%;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: rgba(9, 0, 24, 0.72);
+      backdrop-filter: blur(18px);
+      z-index: 10;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #ffcc00, #ff4ecd 50%, #00e5ff);
+      box-shadow: 0 14px 34px rgba(255, 78, 205, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-mark::before {
+      content: "A";
+      font-size: 1.75rem;
+      font-weight: 950;
+      color: #110026;
+      z-index: 2;
+    }
+
+    .logo-mark::after {
+      content: "";
+      position: absolute;
+      width: 70%;
+      height: 70%;
+      border: 3px solid rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+      transform: rotate(-25deg);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .logo-text strong {
+      font-size: 1.25rem;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text span {
+      font-size: 0.75rem;
+      color: #ffcc00;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin-left: 24px;
+      font-weight: 700;
+      opacity: 0.9;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    .store-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-width: 190px;
+      padding: 14px 20px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(127,231,255,0.28);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 900;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.28);
+    }
+
+    .store-badge span {
+      display: block;
+      font-size: 0.72rem;
+      color: #aeefff;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .store-badge strong {
+      display: block;
+      font-size: 1.05rem;
+      line-height: 1.1;
+    }
+
+    .small-card {
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.2);
+    }
+
+    .small-card h3 {
+      color: #7fe7ff;
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+    }
+
+    .small-card p, .small-card li {
+      color: #d6dfff;
+      line-height: 1.7;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tag-list span {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(127,231,255,0.09);
+      border: 1px solid rgba(127,231,255,0.16);
+      color: #dff9ff;
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+
+    .hero {
+      padding: 105px 8% 70px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.13);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      margin-bottom: 24px;
+      color: #fff2b8;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.8rem, 6vw, 5.9rem);
+      line-height: 0.95;
+      margin-bottom: 24px;
+      letter-spacing: -3px;
+    }
+
+    .hero-content h1 span {
+      background: linear-gradient(90deg, #ffcc00, #00e5ff, #ff4ecd);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-content p {
+      font-size: 1.12rem;
+      line-height: 1.75;
+      max-width: 590px;
+      color: #f3eaff;
+      margin-bottom: 34px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 15px 24px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-weight: 900;
+      text-decoration: none;
+      transition: 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: #ffcc00;
+      color: #12002a;
+      box-shadow: 0 12px 30px rgba(255, 204, 0, 0.35);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+    }
+
+    .hero-panel {
+      background: rgba(255, 255, 255, 0.11);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 38px;
+      padding: 24px;
+      box-shadow: 0 35px 90px rgba(0, 0, 0, 0.38);
+      backdrop-filter: blur(18px);
+    }
+
+    .console-preview {
+      min-height: 440px;
+      border-radius: 32px;
+      padding: 28px;
+      background:
+        linear-gradient(145deg, rgba(0, 229, 255, 0.95), rgba(123, 44, 255, 0.95), rgba(255, 78, 205, 0.95));
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .console-preview::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      background: rgba(255, 255, 255, 0.14);
+      border-radius: 50%;
+      top: -80px;
+      right: -80px;
+    }
+
+    .console-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .mini-logo {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      background: #ffcc00;
+      color: #16002f;
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      font-weight: 950;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .status-pill {
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.2);
+      font-weight: 850;
+      font-size: 0.85rem;
+    }
+
+    .console-preview h2 {
+      font-size: 3rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .console-preview p {
+      color: #fff7d6;
+      line-height: 1.6;
+      position: relative;
+      z-index: 2;
+      max-width: 420px;
+    }
+
+    .floating-games {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .floating-games div {
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 18px;
+      text-align: center;
+      font-size: 1.6rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .floating-games div:nth-child(2) { animation-delay: 0.35s; }
+    .floating-games div:nth-child(3) { animation-delay: 0.7s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    section {
+      padding: 82px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #f2dcff;
+      max-width: 760px;
+      margin: 0 auto 46px;
+      line-height: 1.7;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .feature-box {
+      background: rgba(255, 255, 255, 0.11);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      padding: 30px;
+      border-radius: 28px;
+      transition: 0.3s ease;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .feature-box h3 {
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+      color: #ffcc00;
+    }
+
+    .feature-box p {
+      color: #f3eaff;
+      line-height: 1.6;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .game-tile {
+      padding: 24px;
+      min-height: 250px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+      transition: 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .game-tile::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 204, 0, 0.22), rgba(255, 78, 205, 0.2), rgba(0, 229, 255, 0.18));
+      opacity: 0;
+      transition: 0.3s ease;
+    }
+
+    .game-tile:hover {
+      transform: translateY(-8px) scale(1.01);
+    }
+
+    .game-tile:hover::before {
+      opacity: 1;
+    }
+
+    .game-icon,
+    .game-tile h3,
+    .game-tile p,
+    .game-meta {
+      position: relative;
+      z-index: 2;
+    }
+
+    .game-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      background: linear-gradient(135deg, #ffcc00, #ff4ecd);
+      color: #12002a;
+      margin-bottom: 18px;
+    }
+
+    .game-tile h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .game-tile p {
+      color: #f3eaff;
+      line-height: 1.55;
+      margin-bottom: 20px;
+    }
+
+    .game-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: #fff2b8;
+      font-weight: 800;
+      font-size: 0.86rem;
+    }
+
+    .cta {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.12);
+      margin: 60px 8%;
+      border-radius: 38px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 72px 30px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+    }
+
+    .cta h2 {
+      font-size: 2.6rem;
+      margin-bottom: 16px;
+    }
+
+    .cta p {
+      color: #f4e8ff;
+      max-width: 660px;
+      margin: 0 auto 30px;
+      line-height: 1.7;
+    }
+
+    footer {
+      padding: 34px 8%;
+      text-align: center;
+      color: #f5ddff;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(10, 0, 24, 0.72);
+    }
+
+    @media (max-width: 980px) {
+      header {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      nav a {
+        margin: 0 8px;
+        font-size: 0.95rem;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 70px;
+      }
+
+      .features,
+      .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .features,
+      .games-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .console-preview {
+        min-height: 390px;
+      }
+
+      .floating-games {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .cta h2,
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <svg width="70" height="70" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 0 18px rgba(0,255,255,0.45));">
+        <circle cx="100" cy="108" r="62" stroke="url(#ring)" stroke-width="10" />
+        <path d="M100 28L148 132H122L100 82L78 132H52L100 28Z" fill="url(#gradA)"/>
+        <path d="M100 55L124 118H108L100 96L92 118H76L100 55Z" fill="#031321"/>
+        <circle cx="100" cy="108" r="12" fill="#5CF6FF"/>
+        <defs>
+          <linearGradient id="gradA" x1="52" y1="28" x2="148" y2="132" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#6CFBFF"/>
+            <stop offset="0.5" stop-color="#2A8CFF"/>
+            <stop offset="1" stop-color="#B14DFF"/>
+          </linearGradient>
+          <linearGradient id="ring" x1="38" y1="108" x2="162" y2="108" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#F06BFF"/>
+            <stop offset="1" stop-color="#59F2FF"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="logo-text">
+        <strong style="font-size:2rem;letter-spacing:3px;font-weight:900;background:linear-gradient(90deg,#ffffff,#9ddcff,#bb6cff);-webkit-background-clip:text;color:transparent;">ARCADIUM</strong>
+        <span style="font-size:0.95rem;letter-spacing:8px;color:#7fe7ff;">LABS</span>
+      </div>
+    </div>
+    <nav>
+      <a href="#games">Games</a>
+      <a href="#features">About</a>
+      <a href="#store">Store</a>
+      <a href="#support">Support</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="badge">⚡ Futuristic Mobile Gaming Studio</div>
+        <h1>WE CREATE <br />GAMES THAT <br /><span>INSPIRE</span></h1>
+        <p>
+          Arcadium Labs is an indie mobile gaming studio focused on futuristic, colourful, and highly addictive experiences designed for casual and competitive players around the world.
+        </p>
+        <div class="buttons">
+          <a href="#games" class="btn btn-primary">Explore Games</a>
+          <a href="#store" class="btn btn-secondary">Google Play Portfolio</a>
+        </div>
+        <div style="margin-top:22px;color:#aeb8d8;font-weight:700;">Android available soon via Google Play • iOS coming soon</div>
+      </div>
+
+      <div class="hero-panel">
+        <div class="console-preview">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="position:absolute;bottom:-10px;right:-10px;width:200px;opacity:0.12;filter:drop-shadow(0 0 20px rgba(0,255,255,0.4));">
+            <circle cx="100" cy="108" r="62" stroke="url(#ring2)" stroke-width="10" fill="none"/>
+            <path d="M100 28L148 132H122L100 82L78 132H52L100 28Z" fill="url(#gradB)"/>
+            <circle cx="100" cy="108" r="12" fill="#5CF6FF"/>
+            <defs>
+              <linearGradient id="gradB" x1="52" y1="28" x2="148" y2="132">
+                <stop stop-color="#6CFBFF"/>
+                <stop offset="0.5" stop-color="#2A8CFF"/>
+                <stop offset="1" stop-color="#B14DFF"/>
+              </linearGradient>
+              <linearGradient id="ring2" x1="38" y1="108" x2="162" y2="108">
+                <stop stop-color="#F06BFF"/>
+                <stop offset="1" stop-color="#59F2FF"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="console-top">
+            <svg width="64" height="64" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 0 18px rgba(0,255,255,0.4));">
+              <circle cx="100" cy="108" r="62" stroke="url(#ringMini)" stroke-width="10" />
+              <path d="M100 28L148 132H122L100 82L78 132H52L100 28Z" fill="url(#gradMini)"/>
+              <circle cx="100" cy="108" r="12" fill="#5CF6FF"/>
+              <defs>
+                <linearGradient id="gradMini" x1="52" y1="28" x2="148" y2="132">
+                  <stop stop-color="#6CFBFF"/>
+                  <stop offset="0.5" stop-color="#2A8CFF"/>
+                  <stop offset="1" stop-color="#B14DFF"/>
+                </linearGradient>
+                <linearGradient id="ringMini" x1="38" y1="108" x2="162" y2="108">
+                  <stop stop-color="#F06BFF"/>
+                  <stop offset="1" stop-color="#59F2FF"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="status-pill">73+ Games</div>
+          </div>
+          <div>
+            <h2>Arcadium Labs</h2>
+            <p>Puzzle games, arcade titles, logic challenges, casino experiences, and premium casual mobile gameplay.</p>
+          </div>
+          <div class="floating-games">
+            <div>🧩</div>
+            <div>🎲</div>
+            <div>⚡</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-bottom:80px;">
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(0,255,255,0.2);padding:28px;border-radius:24px;text-align:center;">
+          <div style="font-size:2.7rem;font-weight:900;color:#00e5ff;">73+</div>
+          <div style="color:#dce8ff;margin-top:8px;">Games Available</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(140,0,255,0.25);padding:28px;border-radius:24px;text-align:center;">
+          <div style="font-size:2.7rem;font-weight:900;color:#bb6cff;">8+</div>
+          <div style="color:#dce8ff;margin-top:8px;">Game Categories</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,0,180,0.25);padding:28px;border-radius:24px;text-align:center;">
+          <div style="font-size:2.7rem;font-weight:900;color:#ff5bd2;">NEW</div>
+          <div style="color:#dce8ff;margin-top:8px;">Independent Studio</div>
+        </div>
+      </div>
+      <h2 class="section-title">Browse Categories</h2>
+      <p class="section-subtitle">
+        Explore futuristic mobile experiences across multiple genres designed for replayability and premium gameplay.
+      </p>
+
+      <div class="features">
+        <div class="feature-box">
+          <h3>🧩 Puzzle</h3>
+          <p>30+ puzzle and strategy games with addictive challenge loops.</p>
+        </div>
+        <div class="feature-box">
+          <h3>🔤 Word</h3>
+          <p>Word search, crossword, cryptogram, and language-based brain games.</p>
+        </div>
+        <div class="feature-box">
+          <h3>🎮 Arcade</h3>
+          <p>Fast-paced arcade gameplay including Chaos Tetris and Bubble Shooter Pro.</p>
+        </div>
+        <div class="feature-box">
+          <h3>🃏 Card & Casino</h3>
+          <p>Poker, Solitaire, Vegas Casino, and multiplayer-ready casino experiences.</p>
+        </div>
+        <div class="feature-box">
+          <h3>🧠 Logic</h3>
+          <p>Sudoku, Picross, Kakuro, Logic Grids, and advanced brain-training systems.</p>
+        </div>
+        <div class="feature-box">
+          <h3>⚡ Casual</h3>
+          <p>Colourful casual games designed for smooth quick-play sessions.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="games">
+      <h2 class="section-title">Featured Games</h2>
+      <p class="section-subtitle">
+        Explore the growing Arcadium Labs catalogue featuring puzzle games, word games, logic games, casino experiences, arcade challenges, strategy games, and premium mobile experiences.
+      </p>
+
+      <div class="games-grid">
+        <div class="game-tile">
+          <div>
+            <div class="game-icon">🧠</div>
+            <h3>Elite Puzzle Collection</h3>
+            <p>Includes Constraint Elite, Deception Elite, Speed Elite, Glyph Elite, Neural Link Elite, Memory Flip Elite, Tangle Elite, Zen Clean Elite, Void Avoid Elite, and Cryo State Elite.</p>
+          </div>
+          <div class="game-meta"><span>10 Games</span><span>Available</span></div>
+        </div>
+
+        <div class="game-tile">
+          <div>
+            <div class="game-icon">🔤</div>
+            <h3>Word & Language Collection</h3>
+            <p>Featuring Word Search Elite, Word Connect Elite, Word Ladder Elite, Crossword Elite, Guess The Word Elite, Anagram Solver Elite, and Cryptogram Elite.</p>
+          </div>
+          <div class="game-meta"><span>Word Games</span><span>Available</span></div>
+        </div>
+
+        <div class="game-tile">
+          <div>
+            <div class="game-icon">🎮</div>
+            <h3>Arcade Collection</h3>
+            <p>Chaos Tetris, Bubble Shooter Pro, Bubble Arcana, Ball Sort Puzzle, Tap Away Elite, Stack Blocks Elite, and Color Fill Elite.</p>
+          </div>
+          <div class="game-meta"><span>Arcade</span><span>Available</span></div>
+        </div>
+
+        <div class="game-tile">
+          <div>
+            <div class="game-icon">🃏</div>
+            <h3>Casino & Card Collection</h3>
+            <p>Vegas Casino Flutter, Poker Elite, and Arcadium Solitaire Master built with premium multiplayer-ready gameplay systems.</p>
+          </div>
+          <div class="game-meta"><span>Casino</span><span>Available</span></div>
+        </div>
+
+        <div class="game-tile">
+          <div>
+            <div class="game-icon">🧩</div>
+            <h3>Logic Master Collection</h3>
+            <p>Sudoku Elite, Picross Elite, Kakuro Elite Master, Logic Grid Elite Master, Sliding Tile Elite Master, and Circuit Puzzle Elite Master.</p>
+          </div>
+          <div class="game-meta"><span>Logic</span><span>Available</span></div>
+        </div>
+
+        <div class="game-tile">
+          <div>
+            <div class="game-icon">⚡</div>
+            <h3>Premium Casual Games</h3>
+            <p>Water Sort Elite, Arcadium Merge, Tap and Place, Hoop Sort Elite, One Line Elite, Line Connect Elite, and Reverse Elite.</p>
+          </div>
+          <div class="game-meta"><span>Casual</span><span>Available</span></div>
+        </div>
+      </div>
+
+      </section>
+
+    <section id="store">
+      <h2 class="section-title">Play Store & App Store</h2>
+      <p class="section-subtitle">
+        Arcadium Labs titles will be distributed through official mobile app stores. Google Play portfolio links can be added here once available, while iOS releases are planned for a future rollout.
+      </p>
+      <div style="display:flex;justify-content:center;gap:18px;flex-wrap:wrap;">
+        <a class="store-badge" href="#" aria-label="Google Play portfolio link coming soon">
+          <div style="font-size:1.7rem;">▶</div>
+          <div><span>Available on</span><strong>Google Play</strong></div>
+        </a>
+        <a class="store-badge" href="#" aria-label="Apple App Store coming soon">
+          <div style="font-size:1.7rem;"></div>
+          <div><span>Coming soon on</span><strong>App Store</strong></div>
+        </a>
+      </div>
+    </section>
+
+    <section id="studio">
+      <h2 class="section-title">Built for Mobile Players</h2>
+      <p class="section-subtitle">
+        A complete mobile gaming studio website also needs trust, support, platform readiness, and clear player communication.
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;">
+        <div class="small-card">
+          <h3>Player Support</h3>
+          <p>Dedicated support for gameplay issues, bug reports, account questions, reward concerns, and general feedback.</p>
+        </div>
+        <div class="small-card">
+          <h3>Press Kit</h3>
+          <p>Brand assets, approved logos, studio description, screenshots, and media material for future marketing use.</p>
+        </div>
+        <div class="small-card">
+          <h3>Responsible Monetization</h3>
+          <p>Ad placements should remain user-friendly, non-deceptive, frequency-controlled, and compliant with store policies.</p>
+        </div>
+        <div class="small-card">
+          <h3>Roadmap</h3>
+          <p>New releases, updates, bug fixes, seasonal events, gameplay improvements, and future iOS launch planning.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="support">
+      <h2 class="section-title">Support & Safety</h2>
+      <p class="section-subtitle">
+        Clear player support and safety messaging improves trust and helps prepare the studio for Google Play and App Store review expectations.
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;">
+        <div class="small-card">
+          <h3>Need Help?</h3>
+          <p>Email support will be added here for game issues, bug reports, refund guidance, privacy requests, and app-related questions.</p>
+          <div class="tag-list"><span>support@arcadiumlabs.com</span><span>Response policy pending</span></div>
+        </div>
+        <div class="small-card">
+          <h3>Player Safety</h3>
+          <p>Games should include age-appropriate content, clear ad disclosures, safe user interaction rules, and no harmful or misleading reward mechanics.</p>
+          <div class="tag-list"><span>Age rating ready</span><span>Ad disclosure</span><span>Safe gameplay</span></div>
+        </div>
+        <div class="small-card">
+          <h3>Bug Reports</h3>
+          <p>Players should be able to report crashes, gameplay bugs, payment issues, ad issues, reward issues, and device compatibility problems.</p>
+          <div class="tag-list"><span>Device model</span><span>Game name</span><span>Issue details</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="news" class="cta">
+      <h2>New Games. New Challenges. Every Week.</h2>
+      <p>
+        Arcadium Labs is constantly building new experiences across puzzle, arcade, logic, casino, and casual game genres.
+      </p>
+      <a href="#games" class="btn btn-primary">View All Games</a>
+    </section>
+
+    <section id="contact" class="cta">
+      <h2>Ready to Enter the Arcade?</h2>
+      <p>
+        Follow Arcadium Labs for mobile game releases, colourful puzzle titles, arcade challenges, and premium casual gaming experiences.
+      </p>
+      <a href="mailto:hello@arcadiumlabs.com" class="btn btn-primary">Contact Arcadium Labs</a>
+    </section>
+      <section style="padding:60px 8%;">
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:30px;padding:40px;">
+        <h2 style="font-size:2rem;margin-bottom:20px;color:#7fe7ff;">Legal, Store & Platform Requirements</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;">
+          <div>
+            <h3 style="margin-bottom:12px;color:#ffcc00;">Privacy & Data Protection</h3>
+            <p style="line-height:1.7;color:#d6dfff;">
+              Arcadium Labs is committed to responsible handling of user information in alignment with global privacy standards including POPIA and GDPR principles.
+            </p>
+          </div>
+
+          <div>
+            <h3 style="margin-bottom:12px;color:#ffcc00;">Advertising Compliance</h3>
+            <p style="line-height:1.7;color:#d6dfff;">
+              All monetization systems are designed to align with Google AdMob, Google Play Developer Policies, and fair engagement standards.
+            </p>
+          </div>
+
+          <div>
+            <h3 style="margin-bottom:12px;color:#ffcc00;">Child Safety</h3>
+            <p style="line-height:1.7;color:#d6dfff;">
+              Arcadium Labs does not support exploitative advertising, unsafe user interactions, or prohibited child-directed monetization practices.
+            </p>
+          </div>
+
+          <div>
+            <h3 style="margin-bottom:12px;color:#ffcc00;">Intellectual Property</h3>
+            <p style="line-height:1.7;color:#d6dfff;">
+              All games, branding, assets, source code, audio, and designs remain protected intellectual property of Arcadium Labs.
+            </p>
+          </div>
+
+          <div>
+            <h3 style="margin-bottom:12px;color:#ffcc00;">Store Disclosures</h3>
+            <p style="line-height:1.7;color:#d6dfff;">
+              Game listings should include accurate screenshots, age ratings, privacy labels, ad disclosures, in-app purchase disclosures where applicable, and support contact details.
+            </p>
+          </div>
+
+          <div>
+            <h3 style="margin-bottom:12px;color:#ffcc00;">Accessibility</h3>
+            <p style="line-height:1.7;color:#d6dfff;">
+              The studio should aim for readable contrast, responsive layouts, accessible labels, keyboard-friendly navigation, and clear support pathways.
+            </p>
+          </div>
+
+          <div>
+            <h3 style="margin-bottom:12px;color:#ffcc00;">Security</h3>
+            <p style="line-height:1.7;color:#d6dfff;">
+              Official links, app store buttons, support emails, privacy pages, and future analytics integrations should be reviewed to reduce phishing, spoofing, and user trust risks.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  <section id="privacy-policy" style="padding:80px 8%;">
+      <div class="small-card">
+        <h2 class="section-title" style="text-align:left;">Privacy Policy</h2>
+        <p>
+          Arcadium Labs may collect limited technical, gameplay, analytics, advertising, and support-related information to improve game functionality, security, performance, and player experience. User information is handled according to applicable privacy regulations including POPIA and GDPR principles.
+        </p>
+        <br>
+        <p>
+          Data collected may include device identifiers, gameplay progression, crash logs, advertising interaction metrics, and support communication details. Arcadium Labs does not intentionally sell personal user information.
+        </p>
+      </div>
+    </section>
+
+    <section id="terms-of-service" style="padding:0 8% 80px;">
+      <div class="small-card">
+        <h2 class="section-title" style="text-align:left;">Terms of Service</h2>
+        <p>
+          By using Arcadium Labs websites, games, and services, users agree to follow platform rules, applicable laws, fair gameplay expectations, and monetization policies. Abuse, cheating, exploitation, automated farming, reverse engineering, or malicious activity may result in account or service restrictions.
+        </p>
+      </div>
+    </section>
+
+    <section id="cookie-policy" style="padding:0 8% 80px;">
+      <div class="small-card">
+        <h2 class="section-title" style="text-align:left;">Cookie Policy</h2>
+        <p>
+          Arcadium Labs websites may use cookies, analytics technologies, local storage systems, and advertising tools to improve functionality, remember preferences, measure traffic, and optimize performance.
+        </p>
+      </div>
+    </section>
+
+    <section id="community-guidelines" style="padding:0 8% 80px;">
+      <div class="small-card">
+        <h2 class="section-title" style="text-align:left;">Community Guidelines</h2>
+        <p>
+          Players and community members are expected to maintain respectful behaviour across all Arcadium Labs platforms. Harassment, hate speech, scams, exploit abuse, impersonation, cheating, and harmful conduct are prohibited.
+        </p>
+      </div>
+    </section>
+
+    <section id="refund-policy" style="padding:0 8% 80px;">
+      <div class="small-card">
+        <h2 class="section-title" style="text-align:left;">Refund Policy</h2>
+        <p>
+          Purchases made through Google Play or Apple App Store platforms are generally managed according to the refund policies of the respective platform providers. Arcadium Labs may review support requests relating to technical purchase issues or accidental transactions.
+        </p>
+      </div>
+    </section>
+
+    <section id="dmca-policy" style="padding:0 8% 80px;">
+      <div class="small-card">
+        <h2 class="section-title" style="text-align:left;">DMCA & Copyright Policy</h2>
+        <p>
+          All Arcadium Labs games, branding, source code, visual assets, audio assets, trademarks, and related materials are protected intellectual property. Unauthorized copying, redistribution, asset extraction, cloning, or resale is prohibited.
+        </p>
+        <br>
+        <p>
+          Copyright concerns, infringement notices, or intellectual property disputes may be submitted through the official Arcadium Labs support channels.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:40px;text-align:left;margin-bottom:40px;">
+      <div>
+        <h3 style="margin-bottom:16px;color:#7fe7ff;">Arcadium Labs</h3>
+        <p style="line-height:1.7;color:#d6dfff;">
+          Arcadium Labs is an independent gaming studio focused on premium mobile gaming experiences across puzzle, arcade, strategy, logic, and casual genres.
+        </p>
+      </div>
+
+      <div>
+        <h3 style="margin-bottom:16px;color:#7fe7ff;">Legal</h3>
+        <p><a href="#privacy-policy" style="color:#d6dfff;text-decoration:none;line-height:2;">Privacy Policy</a></p>
+        <p><a href="#terms-of-service" style="color:#d6dfff;text-decoration:none;line-height:2;">Terms of Service</a></p>
+        <p><a href="#cookie-policy" style="color:#d6dfff;text-decoration:none;line-height:2;">Cookie Policy</a></p>
+        <p><a href="#community-guidelines" style="color:#d6dfff;text-decoration:none;line-height:2;">Community Guidelines</a></p>
+        <p><a href="#refund-policy" style="color:#d6dfff;text-decoration:none;line-height:2;">Refund Policy</a></p>
+        <p><a href="#dmca-policy" style="color:#d6dfff;text-decoration:none;line-height:2;">DMCA & Copyright</a></p>
+      </div>
+
+      <div>
+        <h3 style="margin-bottom:16px;color:#7fe7ff;">Compliance</h3>
+        <p style="line-height:1.8;color:#d6dfff;">
+          • GDPR Ready<br>
+          • POPIA Aware<br>
+          • Google Play Policy Compliant<br>
+          • AdMob Friendly Monetization<br>
+          • Child Safety Standards
+        </p>
+      </div>
+
+      <div>
+        <h3 style="margin-bottom:16px;color:#7fe7ff;">Important Notice</h3>
+        <p style="line-height:1.7;color:#d6dfff;">
+          All trademarks, game titles, artwork, logos, and intellectual property displayed on this website are owned by Arcadium Labs unless otherwise stated.
+        </p>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:25px;text-align:center;color:#aeb8d8;line-height:1.8;">
+      <p>© 2026 Arcadium Labs. All rights reserved.</p>
+      <p>This website may use analytics, cookies, and advertising technologies to improve user experience and platform performance.</p>
+      <p>Google Play and the Google Play logo are trademarks of Google LLC. Apple App Store support coming soon.</p>
+    </div>
+  </footer>
+</body>
+</html>
