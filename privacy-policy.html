@@ -1,105 +1,103 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050817">
+  <meta name="description" content="Arcadium Labs privacy policy.">
   <title>Privacy Policy | Arcadium Labs</title>
-  <meta name="description" content="Read the Arcadium Labs privacy policy and learn how information may be handled across our website and digital products.">
-  <meta name="theme-color" content="#080912">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #080912;
-      --panel: #111321;
-      --gold: #f3c969;
-      --text: #f6f6fb;
-      --muted: #b3b6c9;
-      --border: rgba(255,255,255,.11);
+      --bg: #030613;
+      --panel: #091127;
+      --line: rgba(119,180,255,.2);
+      --text: #f4f7ff;
+      --muted: #b8c6e9;
+      --cyan: #50eaff;
+      --violet: #a45cff;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      padding: 0;
-      color: var(--text);
       background:
-        radial-gradient(ellipse at top, rgba(102,69,177,.15), transparent 50%),
+        radial-gradient(ellipse at top,#18275a55,transparent 55%),
         var(--bg);
-      font-family: "Inter", sans-serif;
+      color: var(--text);
+      font-family: Inter, sans-serif;
       line-height: 1.8;
     }
 
     .container {
-      width: min(850px, calc(100% - 36px));
-      margin: 0 auto;
+      width: min(850px,calc(100% - 36px));
+      margin: auto;
     }
 
     header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(3,6,19,.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
       padding: 22px 0;
-      border-bottom: 1px solid var(--border);
     }
 
     header a, .back-link {
-      color: var(--gold);
+      color: var(--cyan);
       text-decoration: none;
-      font-weight: 700;
+      font-weight: 800;
     }
 
-    main {
-      padding: 65px 0 90px;
+    main { padding: 65px 0 90px; }
+
+    .kicker {
+      color: var(--cyan);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 800;
     }
 
     h1, h2 {
-      font-family: "Orbitron", sans-serif;
+      font-family: Orbitron, sans-serif;
       line-height: 1.35;
     }
 
-    h1 {
-      font-size: clamp(2rem, 5vw, 3.2rem);
-    }
+    h1 { font-size: clamp(30px,5vw,48px); }
 
     h2 {
       margin-top: 36px;
-      font-size: 1.25rem;
-      color: var(--gold);
+      font-size: 19px;
+      color: var(--cyan);
     }
 
-    p, li {
-      color: var(--muted);
-    }
+    p, li { color: var(--muted); }
 
     .notice {
       margin: 25px 0;
       padding: 18px;
-      border: 1px solid rgba(243,201,105,.3);
-      border-radius: 10px;
-      background: rgba(243,201,105,.06);
+      border: 1px solid rgba(80,234,255,.3);
+      border-radius: 12px;
+      background: rgba(80,234,255,.05);
     }
 
-    .notice p {
-      margin: 0;
-    }
+    .notice p { margin: 0; }
 
     footer {
       padding: 25px 0;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--line);
       color: var(--muted);
-      font-size: .85rem;
+      font-size: 12px;
     }
   </style>
 </head>
@@ -112,31 +110,24 @@
   </header>
 
   <main class="container">
-    <p style="color:#f3c969;font-weight:700;letter-spacing:.14em;text-transform:uppercase;">
-      Legal & Privacy
-    </p>
-
+    <p class="kicker">Legal & Privacy</p>
     <h1>Privacy Policy</h1>
-
-    <p>
-      Last updated: 12 October 2026
-    </p>
+    <p><strong>Last updated:</strong> 12 October 2026</p>
 
     <div class="notice">
       <p>
-        <strong>Publisher note:</strong> This is a template, not a verified
-        description of Arcadium Labs' actual data practices. Review and amend
-        it before publishing. Remove any statement that does not accurately
-        reflect the website, games, advertising SDKs or other services used.
+        <strong>Important:</strong> This is a starting template. Before publishing,
+        verify that every statement reflects Arcadium Labs' actual website,
+        games, advertising SDKs, analytics tools and data practices. Add a
+        monitored privacy contact address and any required third-party disclosures.
       </p>
     </div>
 
     <p>
       This Privacy Policy explains how Arcadium Labs ("we", "us" or "our")
-      may handle information in connection with the Arcadium Labs website
-      and the digital products we publish. Different games may use different
-      features and third-party services, so additional disclosures may apply
-      to individual products.
+      may handle information in connection with our website and digital
+      products. Different games may use different features and third-party
+      services, so additional privacy disclosures may apply to individual products.
     </p>
 
     <h2>1. Scope</h2>
@@ -149,25 +140,22 @@
 
     <h2>2. Information We May Process</h2>
     <p>
-      Depending on how a website or game is configured, information may
-      include technical information such as device type, operating system,
-      application version, diagnostic logs, crash information, usage events
-      or network information. Information may also be processed when a user
-      contacts us directly.
+      Depending on how a website or game is configured, information may include
+      technical information such as device type, operating system, application
+      version, diagnostic logs, crash information, usage events or network
+      information. Information may also be processed when a user contacts us.
     </p>
     <p>
       The actual categories of information collected depend on the features,
-      permissions, software development kits and third-party services used
-      in each product. This section must be updated to reflect verified
-      practices for each product.
+      permissions, software development kits and third-party services used in
+      each product. This section must be updated to reflect verified practices.
     </p>
 
     <h2>3. How Information May Be Used</h2>
     <p>
-      Where applicable, information may be used to operate and maintain
-      products, respond to enquiries, diagnose errors, protect services,
-      understand performance, improve user experience and comply with
-      applicable legal requirements.
+      Where applicable, information may be used to operate and maintain products,
+      respond to enquiries, diagnose errors, protect services, understand
+      performance, improve user experience and comply with legal requirements.
     </p>
 
     <h2>4. Advertising, Analytics and Third-Party Services</h2>
@@ -178,10 +166,9 @@
       and terms.
     </p>
     <p>
-      Before publishing this policy, identify every SDK and third-party
-      service actually used in each game, including any advertising or
-      analytics providers, and link to their applicable privacy information.
-      Do not assume that every game uses the same services.
+      Identify every SDK and third-party service actually used in each game,
+      including advertising and analytics providers, and link to their applicable
+      privacy information. Do not assume every game uses the same services.
     </p>
 
     <h2>5. Data Sharing</h2>
@@ -189,40 +176,37 @@
       Depending on the product and its configuration, information may be
       processed by service providers that support the operation, security,
       distribution or functionality of that product. Any sharing must be
-      consistent with the actual data practices, applicable disclosures and
-      relevant law.
+      consistent with actual data practices, applicable disclosures and law.
     </p>
 
     <h2>6. Data Retention and Security</h2>
     <p>
-      Retention periods depend on the type of information and the purpose
-      for which it is processed. Appropriate security measures should be
-      applied to protect information handled by our services. No method of
-      electronic transmission or storage can be guaranteed to be completely
-      secure.
+      Retention periods depend on the type of information and the purpose for
+      which it is processed. Appropriate security measures should be applied
+      to protect information handled by our services. No method of electronic
+      transmission or storage can be guaranteed to be completely secure.
     </p>
 
     <h2>7. Children's Privacy</h2>
     <p>
-      Our treatment of children's information depends on the intended
-      audience, applicable laws and the features and third-party services
-      used in each product. If a product is directed at children or is
-      likely to be accessed by children, its design, advertising, data
-      collection and disclosures must comply with applicable requirements.
+      Our treatment of children's information depends on the intended audience,
+      applicable laws and the features and third-party services used in each
+      product. If a product is directed at children or is likely to be accessed
+      by children, its design, advertising, data collection and disclosures must
+      comply with applicable requirements.
     </p>
     <p>
-      Replace this section with a product-specific statement after reviewing
-      the intended age group, applicable platform rules and actual data
-      practices. Do not publish an unverified claim that no children's data
-      is collected.
+      Review the intended age group, platform rules and actual data practices
+      before publishing a product-specific statement. Do not claim that no
+      children's data is collected unless that claim has been verified.
     </p>
 
     <h2>8. Your Privacy Rights</h2>
     <p>
-      Depending on your location and applicable law, you may have rights
-      relating to access, correction, deletion, objection or other handling
-      of personal information. Requests should be assessed under the laws
-      that apply to the relevant product and circumstances.
+      Depending on your location and applicable law, you may have rights relating
+      to access, correction, deletion, objection or other handling of personal
+      information. Requests should be assessed under the laws that apply to
+      the relevant product and circumstances.
     </p>
 
     <h2>9. External Links</h2>
@@ -241,15 +225,12 @@
 
     <h2>11. Contact</h2>
     <p>
-      For privacy questions, contact Arcadium Labs through an official
-      contact channel published by the studio.
-    </p>
-    <p>
-      <strong>Before launch:</strong> Add a monitored privacy contact email
-      or contact form here. Do not publish a placeholder address.
+      For privacy questions, contact Arcadium Labs through an official contact
+      channel published by the studio. Add a monitored privacy email address
+      or contact form before publishing this page.
     </p>
 
-    <p style="margin-top:40px;">
+    <p style="margin-top:40px">
       <a class="back-link" href="index.html">← Back to Arcadium Labs</a>
     </p>
   </main>
