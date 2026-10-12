@@ -3,1393 +3,1478 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050817">
 
-  <title>Arcadium Labs | Enter a New Universe of Play</title>
-  <meta name="description" content="Discover Arcadium Labs, an independent game studio with 26 published games across puzzle, arcade, strategy, casual and other gaming categories.">
-  <meta name="theme-color" content="#07091b">
+  <title>Arcadium Labs | Enter the Universe</title>
+
+  <meta name="description" content="Explore Arcadium Labs, an independent mobile game studio with 26 published games across puzzle, logic, arcade, word, casual and strategy genres.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Arcadium Labs">
+
+  <link rel="canonical" href="https://arcadium-labs-website.vercel.app/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Arcadium Labs | Enter the Universe">
+  <meta property="og:description" content="26 published games. Countless ways to play. Discover the Arcadium universe.">
+  <meta property="og:url" content="https://arcadium-labs-website.vercel.app/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #07091b;
-      --bg-soft: #0c1028;
-      --blue: #438bff;
-      --cyan: #48eaff;
-      --purple: #9857ff;
-      --violet: #c15cff;
-      --text: #f5f7ff;
-      --muted: #aab4d5;
-      --line: rgba(133, 157, 255, .2);
-      --glass: rgba(17, 23, 55, .66);
+      --bg: #030613;
+      --panel: rgba(11, 20, 47, .88);
+      --line: rgba(119, 180, 255, .22);
+      --text: #f4f7ff;
+      --muted: #b8c6e9;
+      --cyan: #50eaff;
+      --blue: #367bff;
+      --violet: #a45cff;
+      --max: 1200px;
     }
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 90px;
+      scroll-padding-top: 95px;
     }
 
     body {
+      margin: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
-        BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.65;
+      font-family: Inter, system-ui, sans-serif;
       overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 75% 10%, #3d37a52b, transparent 35%),
+        radial-gradient(ellipse at 10% 40%, #087acb1c, transparent 35%),
+        radial-gradient(ellipse at 80% 80%, #8d37c51a, transparent 40%),
+        #030613;
     }
 
     a {
       color: inherit;
-      text-decoration: none;
     }
 
-    button, a {
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button,
+    a {
       -webkit-tap-highlight-color: transparent;
     }
 
-    button:focus-visible, a:focus-visible {
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
       outline: 2px solid var(--cyan);
-      outline-offset: 5px;
+      outline-offset: 4px;
     }
 
-    /* COSMIC BACKGROUND */
+    .container {
+      width: min(var(--max), calc(100% - 44px));
+      margin-inline: auto;
+    }
 
-    .universe {
+    /* Animated cosmic starfield */
+
+    .stars,
+    .stars::before,
+    .stars::after {
       position: fixed;
-      inset: 0;
-      z-index: -3;
-      overflow: hidden;
+      inset: -20%;
+      z-index: -2;
       pointer-events: none;
-      background:
-        radial-gradient(ellipse at 15% 20%,
-          rgba(40, 83, 220, .22), transparent 36%),
-        radial-gradient(ellipse at 82% 25%,
-          rgba(130, 40, 235, .20), transparent 38%),
-        radial-gradient(ellipse at 50% 85%,
-          rgba(0, 170, 255, .11), transparent 40%),
-        linear-gradient(145deg, #060817, #0b0d27 48%, #08071b);
-    }
-
-    .universe::before {
       content: "";
-      position: absolute;
-      width: 75vw;
-      height: 75vw;
-      max-width: 1000px;
-      max-height: 1000px;
-      top: -34%;
-      left: 12%;
-      border-radius: 50%;
-      background: conic-gradient(
-        from 20deg,
-        transparent,
-        rgba(65, 109, 255, .12),
-        transparent,
-        rgba(177, 70, 255, .14),
-        transparent,
-        rgba(60, 232, 255, .08),
-        transparent
-      );
-      filter: blur(55px);
-      animation: nebulaRotate 55s linear infinite;
-    }
-
-    .universe::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      opacity: .55;
       background-image:
-        radial-gradient(1px 1px at 10% 12%, white 98%, transparent),
-        radial-gradient(2px 2px at 26% 44%, #8beaff 98%, transparent),
-        radial-gradient(1px 1px at 62% 19%, white 98%, transparent),
-        radial-gradient(1px 1px at 78% 61%, #bd8bff 98%, transparent),
-        radial-gradient(2px 2px at 89% 24%, white 98%, transparent),
-        radial-gradient(1px 1px at 43% 78%, #8beaff 98%, transparent),
-        radial-gradient(1px 1px at 17% 83%, white 98%, transparent),
-        radial-gradient(1px 1px at 72% 91%, white 98%, transparent);
+        radial-gradient(1px 1px at 10% 20%, #fff 98%, transparent),
+        radial-gradient(2px 2px at 80% 30%, #7defff 98%, transparent),
+        radial-gradient(1px 1px at 45% 65%, #a88aff 98%, transparent),
+        radial-gradient(1px 1px at 72% 82%, #fff 98%, transparent),
+        radial-gradient(2px 2px at 25% 75%, #6494ff 98%, transparent);
       background-size: 330px 280px;
-      animation: starDrift 100s linear infinite;
+      opacity: .45;
+      animation: starDrift 80s linear infinite;
     }
 
-    .ambient-glow {
-      position: absolute;
-      width: 380px;
-      height: 380px;
-      border-radius: 50%;
-      filter: blur(110px);
-      opacity: .24;
-      animation: glowPulse 9s ease-in-out infinite alternate;
+    .stars::before {
+      opacity: .3;
+      transform: scale(1.4);
+      animation-duration: 120s;
     }
 
-    .glow-one {
-      top: 15%;
-      left: -180px;
-      background: #1767ff;
-    }
-
-    .glow-two {
-      top: 40%;
-      right: -200px;
-      background: #a328ff;
-      animation-delay: -4s;
-    }
-
-    @keyframes nebulaRotate {
-      to { transform: rotate(360deg); }
+    .stars::after {
+      opacity: .2;
+      transform: scale(1.8);
+      animation-duration: 160s;
     }
 
     @keyframes starDrift {
-      from { transform: translateY(0); }
-      to { transform: translateY(-280px); }
+      to {
+        transform: translate3d(-45px, 35px, 0);
+      }
     }
 
-    @keyframes glowPulse {
-      from { transform: scale(.8); opacity: .14; }
-      to { transform: scale(1.15); opacity: .3; }
-    }
+    /* Navigation */
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes orbit {
-      to { transform: rotate(360deg); }
-    }
-
-    /* NAVIGATION */
-
-    .site-header {
+    header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: rgba(6, 8, 24, .77);
-      border-bottom: 1px solid rgba(140, 160, 255, .13);
-      backdrop-filter: blur(20px);
+      z-index: 50;
+      background: rgba(3, 6, 19, .84);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(130, 180, 255, .15);
     }
 
-    .navbar {
-      max-width: 1240px;
-      margin: auto;
-      padding: 16px 28px;
+    .nav {
+      min-height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 22px;
     }
 
     .brand {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: 850;
-      font-size: 1.12rem;
-      letter-spacing: -.5px;
+      text-decoration: none;
+      flex-shrink: 0;
     }
 
     .brand-mark {
-      width: 42px;
-      height: 42px;
+      width: 43px;
+      height: 43px;
       display: grid;
       place-items: center;
-      border-radius: 14px;
-      color: white;
-      font-size: 1.3rem;
-      background: linear-gradient(135deg, #258cff, #963eff 75%);
-      box-shadow: 0 0 26px rgba(91, 100, 255, .36);
+      clip-path: polygon(50% 0, 100% 100%, 0 100%);
+      background: linear-gradient(145deg, var(--cyan), var(--violet));
+      color: #061026;
+      font: 800 25px Orbitron, sans-serif;
+      filter: drop-shadow(0 0 12px #50eaff55);
     }
 
-    .brand small {
+    .brand-name {
+      font: 800 16px Orbitron, sans-serif;
+      letter-spacing: 2px;
+    }
+
+    .brand-name span {
       display: block;
-      font-size: .64rem;
-      font-weight: 600;
-      letter-spacing: 2.7px;
-      color: #9cace2;
-      text-transform: uppercase;
+      color: var(--cyan);
+      font-size: 10px;
+      letter-spacing: 7px;
+      margin-top: 4px;
     }
 
-    .nav-links {
+    nav {
       display: flex;
       align-items: center;
-      gap: 30px;
-      color: #c5cce8;
-      font-size: .9rem;
+      gap: 23px;
     }
 
-    .nav-links a {
-      transition: color .2s ease;
+    nav a {
+      color: #d5def7;
+      font-size: 12px;
+      text-decoration: none;
+      transition: color .2s;
     }
 
-    .nav-links a:hover {
+    nav a:hover {
       color: var(--cyan);
-    }
-
-    .nav-cta {
-      padding: 10px 17px;
-      border: 1px solid rgba(93, 223, 255, .5);
-      border-radius: 12px;
-      color: #dffaff;
-      background: rgba(42, 174, 255, .08);
     }
 
     .menu-toggle {
       display: none;
+      padding: 9px 12px;
       border: 1px solid var(--line);
+      border-radius: 12px;
+      background: transparent;
       color: white;
-      background: var(--glass);
-      border-radius: 10px;
-      padding: 8px 12px;
-      font-size: 1.2rem;
+      cursor: pointer;
+      font-size: 21px;
+    }
+
+    /* Buttons */
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 13px 20px;
+      border: 1px solid #50eaff77;
+      border-radius: 999px;
+      background: linear-gradient(100deg, #168cdb, #5b54e8 65%, #8d4bdf);
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+      box-shadow: 0 8px 32px #367bff28;
+      transition: transform .25s, box-shadow .25s;
       cursor: pointer;
     }
 
-    /* SHARED LAYOUT */
-
-    .container {
-      width: min(1160px, calc(100% - 48px));
-      margin: 0 auto;
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px #367bff55;
     }
 
-    .section {
-      padding: 100px 0;
+    .button.secondary {
+      background: rgba(5, 12, 34, .7);
+      border-color: #9abaff55;
+      box-shadow: none;
+    }
+
+    .button.small {
+      padding: 10px 15px;
+      font-size: 12px;
+    }
+
+    /* Hero */
+
+    .hero {
+      min-height: 690px;
+      display: grid;
+      align-items: center;
       position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(119, 180, 255, .14);
     }
 
-    .section-heading {
-      max-width: 720px;
-      margin: 0 auto 48px;
-      text-align: center;
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse at 78% 40%, #785bff35, transparent 24%),
+        radial-gradient(ellipse at 72% 55%, #00bfff25, transparent 32%),
+        radial-gradient(ellipse at 85% 75%, #a45cff20, transparent 25%),
+        linear-gradient(110deg, #030613 5%, #070d28 48%, #10103b 100%);
+      animation: heroGlow 8s ease-in-out infinite alternate;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, #030613 0%, #030613d9 37%, #03061335 100%);
+      pointer-events: none;
+    }
+
+    @keyframes heroGlow {
+      from {
+        filter: hue-rotate(0deg);
+        transform: scale(1);
+      }
+      to {
+        filter: hue-rotate(18deg);
+        transform: scale(1.04);
+      }
+    }
+
+    .hero-copy {
+      padding: 100px 0 110px;
+      max-width: 700px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 9px;
-      color: #81eaff;
-      font-size: .76rem;
-      font-weight: 800;
-      letter-spacing: 2.4px;
+      padding: 9px 13px;
+      border: 1px solid #50eaff55;
+      border-radius: 999px;
+      background: #07132cbd;
+      color: #baf7ff;
+      font-size: 11px;
+      letter-spacing: 1.6px;
       text-transform: uppercase;
-      margin-bottom: 18px;
+      font-weight: 800;
     }
 
-    .eyebrow::before {
-      content: "";
-      width: 24px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--cyan), var(--purple));
+    .pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 14px var(--cyan);
+      animation: pulse 1.8s infinite;
     }
 
-    h1, h2, h3 {
-      line-height: 1.15;
-      letter-spacing: -1.1px;
+    @keyframes pulse {
+      50% {
+        opacity: .35;
+        box-shadow: 0 0 2px var(--cyan);
+      }
     }
 
-    h2 {
-      font-size: clamp(2rem, 4vw, 3.1rem);
-      margin-bottom: 18px;
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
     }
 
-    .gradient-text {
-      color: transparent;
-      background: linear-gradient(100deg, #ffffff 5%, #7beaff 42%,
-        #9d8bff 76%, #d38aff);
-      -webkit-background-clip: text;
+    h1 {
+      margin: 27px 0 24px;
+      font: 800 clamp(42px, 7vw, 84px)/.99 Orbitron, sans-serif;
+      letter-spacing: -3px;
+      text-wrap: balance;
+    }
+
+    .gradient {
+      background: linear-gradient(95deg, #fff, #7defff 36%, #9b7bff 72%, #df9cff);
       background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
-    .section-heading p {
-      color: var(--muted);
-      font-size: 1.03rem;
-      max-width: 620px;
-      margin: 0 auto;
+    .hero p {
+      max-width: 580px;
+      color: #d0dcf5;
+      font-size: 17px;
+      line-height: 1.8;
     }
 
-    /* HERO */
-
-    .hero {
-      min-height: 700px;
-      display: flex;
-      align-items: center;
-      padding: 90px 0 85px;
-      position: relative;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 45px;
-      align-items: center;
-    }
-
-    .hero-copy {
-      animation: fadeUp .9s ease both;
-    }
-
-    .announcement {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 13px;
-      border: 1px solid rgba(106, 223, 255, .25);
-      border-radius: 99px;
-      background: rgba(37, 119, 255, .08);
-      color: #c4eaff;
-      font-size: .8rem;
-      margin-bottom: 25px;
-    }
-
-    .announcement-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #56f0c1;
-      box-shadow: 0 0 12px #56f0c1;
-    }
-
-    .hero h1 {
-      font-size: clamp(3.2rem, 6.2vw, 5.7rem);
-      line-height: .99;
-      max-width: 720px;
-      margin-bottom: 26px;
-      letter-spacing: -4px;
-    }
-
-    .hero-description {
-      max-width: 560px;
-      color: #b5bfdf;
-      font-size: 1.08rem;
-      margin-bottom: 30px;
-    }
-
-    .hero-actions {
+    .actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 40px;
+      gap: 13px;
+      margin-top: 28px;
     }
 
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 22px;
-      border-radius: 13px;
-      font-size: .94rem;
-      font-weight: 750;
-      transition: transform .2s ease, box-shadow .2s ease,
-        border-color .2s ease;
+    .hero-note {
+      margin-top: 21px;
+      color: #a9b8d9;
+      font-size: 12px;
     }
 
-    .button:hover {
-      transform: translateY(-3px);
+    .scroll-cue {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #a8c3ef;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
-    .button-primary {
-      color: white;
-      background: linear-gradient(110deg, #247eff, #7654ff 70%, #a24cff);
-      box-shadow: 0 10px 34px rgba(91, 80, 255, .26);
+    /* Sections */
+
+    section {
+      padding: 90px 0;
     }
 
-    .button-primary:hover {
-      box-shadow: 0 14px 42px rgba(91, 80, 255, .42);
+    .section-head {
+      max-width: 760px;
+      margin: 0 auto 42px;
+      text-align: center;
     }
 
-    .button-secondary {
-      color: #e3edff;
-      border: 1px solid rgba(149, 174, 255, .3);
-      background: rgba(255, 255, 255, .035);
-    }
-
-    .button-secondary:hover {
-      border-color: rgba(82, 226, 255, .65);
-    }
-
-    .hero-proof {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      color: #aeb8d7;
-      font-size: .83rem;
-    }
-
-    .hero-proof span {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .proof-icon {
+    .kicker {
+      margin-bottom: 14px;
       color: var(--cyan);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 800;
     }
 
-    /* COSMIC HERO ART */
-
-    .cosmic-art {
-      min-height: 430px;
-      display: grid;
-      place-items: center;
-      position: relative;
-      animation: fadeUp 1s ease .15s both;
+    .section-head h2,
+    .cta-panel h2 {
+      font: 700 clamp(28px, 4vw, 46px)/1.2 Orbitron, sans-serif;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
     }
 
-    .planet {
-      width: min(340px, 72vw);
-      aspect-ratio: 1;
-      position: relative;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 30% 25%,
-          rgba(174, 230, 255, .95), transparent 9%),
-        radial-gradient(ellipse at 32% 30%,
-          #4beaff 0%, #337cff 23%, #5634c8 48%,
-          #1b1452 68%, #080b23 79%);
-      box-shadow:
-        inset -32px -30px 65px rgba(0, 0, 25, .75),
-        inset 10px 8px 30px rgba(147, 237, 255, .35),
-        0 0 65px rgba(64, 104, 255, .42),
-        0 0 150px rgba(139, 61, 255, .22);
-      animation: float 7s ease-in-out infinite;
+    .section-head p {
+      color: var(--muted);
+      line-height: 1.8;
     }
 
-    .planet::before {
-      content: "";
-      position: absolute;
-      inset: -15%;
-      border: 1px solid rgba(111, 228, 255, .48);
-      border-radius: 50%;
-      transform: rotate(-24deg) scaleY(.34);
-      box-shadow: 0 0 22px rgba(79, 207, 255, .16);
-    }
-
-    .planet::after {
-      content: "";
-      position: absolute;
-      inset: -7%;
-      border-radius: 50%;
-      border: 2px solid transparent;
-      border-top-color: rgba(191, 114, 255, .9);
-      border-bottom-color: rgba(74, 233, 255, .7);
-      transform: rotate(-24deg) scaleY(.45);
-      filter: drop-shadow(0 0 7px rgba(100, 180, 255, .7));
-    }
-
-    .planet-core {
-      position: absolute;
-      inset: 22%;
-      border-radius: 50%;
-      background: radial-gradient(circle at 40% 35%,
-        rgba(194, 245, 255, .25), transparent 55%);
-    }
-
-    .orbit {
-      position: absolute;
-      width: 95%;
-      height: 37%;
-      border: 1px solid rgba(113, 215, 255, .55);
-      border-radius: 50%;
-      transform: rotate(-27deg);
-    }
-
-    .orbit-two {
-      width: 115%;
-      height: 48%;
-      border-color: rgba(180, 101, 255, .4);
-      transform: rotate(35deg);
-      animation: orbit 36s linear infinite;
-    }
-
-    .floating-card {
-      position: absolute;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 15px 18px;
-      border: 1px solid rgba(150, 174, 255, .23);
-      border-radius: 17px;
-      background: rgba(12, 17, 48, .78);
-      backdrop-filter: blur(16px);
-      box-shadow: 0 15px 50px rgba(0, 0, 0, .24);
-    }
-
-    .floating-card strong {
-      display: block;
-      font-size: .93rem;
-    }
-
-    .floating-card small {
-      display: block;
-      color: #a9b6d8;
-      font-size: .75rem;
-    }
-
-    .floating-icon {
-      width: 43px;
-      height: 43px;
-      display: grid;
-      place-items: center;
-      border-radius: 13px;
-      font-size: 1.3rem;
-      background: linear-gradient(135deg,
-        rgba(43, 142, 255, .25), rgba(164, 73, 255, .25));
-      border: 1px solid rgba(122, 199, 255, .2);
-    }
-
-    .float-top {
-      top: 8%;
-      right: -2%;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .float-bottom {
-      bottom: 8%;
-      left: -4%;
-      animation: float 7s ease-in-out -2s infinite;
-    }
-
-    /* GAME COUNT STRIP */
-
-    .stats-wrap {
-      padding: 0 0 35px;
-    }
+    /* Studio highlights */
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 23px;
-      background: linear-gradient(115deg,
-        rgba(21, 32, 76, .78), rgba(23, 16, 61, .67));
-      box-shadow: 0 20px 80px rgba(0, 0, 0, .12);
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
     }
 
     .stat {
       padding: 28px 18px;
       text-align: center;
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, #0b1530d9, #080d20d9);
     }
 
-    .stat + .stat {
-      border-left: 1px solid var(--line);
+    .stat strong {
+      display: block;
+      margin-bottom: 9px;
+      color: var(--cyan);
+      font: 700 clamp(20px, 2.6vw, 30px) Orbitron, sans-serif;
     }
 
-    .stat-number {
-      font-size: clamp(1.8rem, 4vw, 2.7rem);
-      font-weight: 900;
-      line-height: 1.15;
-      letter-spacing: -1px;
-      background: linear-gradient(90deg, #64eaff, #9c87ff);
-      color: transparent;
-      -webkit-background-clip: text;
-      background-clip: text;
+    .stat span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
     }
 
-    .stat-label {
-      margin-top: 8px;
-      color: #b4c0e2;
-      font-size: .85rem;
-    }
-
-    /* CATEGORY CARDS */
+    /* Category cards */
 
     .category-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .category {
+      position: relative;
+      overflow: hidden;
+      padding: 27px;
+      border: 1px solid var(--line);
+      border-radius: 19px;
+      background: linear-gradient(145deg, rgba(14, 28, 60, .88), rgba(6, 11, 28, .9));
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+
+    .category:hover {
+      transform: translateY(-5px);
+      border-color: #50eaff80;
+      box-shadow: 0 16px 38px #0003;
+    }
+
+    .category .icon {
+      margin-bottom: 17px;
+      font-size: 30px;
+      filter: drop-shadow(0 0 12px #367bff55);
+    }
+
+    .category h3 {
+      margin-bottom: 10px;
+      font-size: 17px;
+    }
+
+    .category p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    /* Studio philosophy */
+
+    .feature-band {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
 
-    .category-card {
-      position: relative;
-      min-height: 220px;
-      padding: 28px;
-      overflow: hidden;
-      border: 1px solid rgba(143, 166, 255, .17);
+    .feature-panel {
+      padding: 32px;
+      border: 1px solid var(--line);
       border-radius: 22px;
-      background: linear-gradient(145deg,
-        rgba(24, 33, 76, .68), rgba(13, 16, 43, .8));
-      transition: transform .25s ease, border-color .25s ease,
-        box-shadow .25s ease;
-    }
-
-    .category-card::before {
-      content: "";
-      position: absolute;
-      width: 150px;
-      height: 150px;
-      right: -65px;
-      top: -70px;
-      border-radius: 50%;
-      background: var(--card-glow, #438bff);
-      filter: blur(75px);
-      opacity: .24;
-      transition: opacity .25s ease;
-    }
-
-    .category-card:hover {
-      transform: translateY(-7px);
-      border-color: rgba(92, 218, 255, .48);
-      box-shadow: 0 18px 50px rgba(22, 41, 113, .23);
-    }
-
-    .category-card:hover::before {
-      opacity: .48;
-    }
-
-    .category-icon {
-      width: 58px;
-      height: 58px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 23px;
-      border: 1px solid rgba(139, 181, 255, .22);
-      border-radius: 17px;
-      background: linear-gradient(135deg,
-        rgba(47, 134, 255, .22), rgba(163, 77, 255, .18));
-      font-size: 1.8rem;
-    }
-
-    .category-card h3 {
-      font-size: 1.22rem;
-      margin-bottom: 10px;
-      letter-spacing: -.3px;
-    }
-
-    .category-card p {
-      color: #aeb8d5;
-      font-size: .91rem;
-      max-width: 310px;
-    }
-
-    .category-card .arrow {
-      position: absolute;
-      top: 28px;
-      right: 26px;
-      color: #6ce8ff;
-      font-size: 1.2rem;
-    }
-
-    /* ABOUT */
-
-    .about-panel {
-      display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 55px;
-      align-items: center;
-      padding: 48px;
-      border: 1px solid rgba(140, 161, 255, .2);
-      border-radius: 28px;
-      background: linear-gradient(130deg,
-        rgba(23, 32, 76, .73), rgba(16, 15, 47, .78));
-      position: relative;
-      overflow: hidden;
-    }
-
-    .about-visual {
-      min-height: 270px;
-      display: grid;
-      place-items: center;
-      position: relative;
-    }
-
-    .about-symbol {
-      width: 190px;
-      height: 190px;
-      display: grid;
-      place-items: center;
-      border-radius: 45px;
-      transform: rotate(-8deg);
-      font-size: 5rem;
-      background: linear-gradient(145deg,
-        rgba(61, 146, 255, .27), rgba(159, 70, 255, .24));
-      border: 1px solid rgba(118, 206, 255, .38);
-      box-shadow: 0 0 70px rgba(80, 92, 255, .2);
-    }
-
-    .about-visual::before,
-    .about-visual::after {
-      content: "";
-      position: absolute;
-      width: 245px;
-      height: 245px;
-      border: 1px solid rgba(105, 208, 255, .25);
-      border-radius: 50%;
-      animation: orbit 40s linear infinite;
-    }
-
-    .about-visual::after {
-      width: 290px;
-      height: 150px;
-      border-color: rgba(179, 105, 255, .35);
-      transform: rotate(-35deg);
-      animation-direction: reverse;
-    }
-
-    .about-copy h2 {
-      font-size: clamp(2rem, 4vw, 2.8rem);
-    }
-
-    .about-copy p {
-      color: #b3bddb;
-      margin-bottom: 17px;
-    }
-
-    .about-points {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 25px;
-    }
-
-    .about-point {
-      color: #dce6ff;
-      font-size: .9rem;
-      padding: 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(142, 167, 255, .15);
-      background: rgba(255, 255, 255, .025);
-    }
-
-    .about-point span {
-      color: var(--cyan);
-      margin-right: 7px;
-    }
-
-    /* STORE CTA */
-
-    .store-section {
-      padding-top: 25px;
-    }
-
-    .store-panel {
-      text-align: center;
-      padding: 75px 28px;
-      border: 1px solid rgba(123, 175, 255, .24);
-      border-radius: 30px;
-      overflow: hidden;
-      position: relative;
       background:
-        radial-gradient(ellipse at 50% 0%,
-          rgba(85, 100, 255, .22), transparent 65%),
-        linear-gradient(135deg,
-          rgba(20, 31, 77, .82), rgba(20, 13, 52, .9));
+        radial-gradient(circle at top right, #367bff19, transparent 45%),
+        #091127d9;
     }
 
-    .store-panel::before,
-    .store-panel::after {
-      content: "";
-      position: absolute;
-      width: 260px;
-      height: 260px;
+    .feature-panel h3 {
+      margin-bottom: 13px;
+      font: 600 19px Orbitron, sans-serif;
+    }
+
+    .feature-panel p,
+    .feature-panel li {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.85;
+    }
+
+    /* Portfolio */
+
+    .games-section {
+      background: linear-gradient(180deg, transparent, #09122a80, transparent);
+    }
+
+    .portfolio-callout {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      margin-top: 28px;
+      padding: 32px;
+      border: 1px solid #50eaff44;
+      border-radius: 23px;
+      background:
+        radial-gradient(ellipse at 15% 50%, #367bff20, transparent 40%),
+        #081127;
+    }
+
+    .portfolio-callout h3 {
+      margin-bottom: 10px;
+      font: 600 21px Orbitron, sans-serif;
+    }
+
+    .portfolio-callout p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .portfolio-orbit {
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      width: 76px;
+      height: 76px;
+      border: 1px solid #50eaff99;
       border-radius: 50%;
-      border: 1px solid rgba(105, 217, 255, .1);
-      top: -140px;
-      left: -90px;
-      pointer-events: none;
+      box-shadow: 0 0 35px #367bff30, inset 0 0 25px #a45cff25;
+      color: var(--cyan);
+      font: 800 30px Orbitron, sans-serif;
     }
 
-    .store-panel::after {
-      width: 330px;
-      height: 330px;
-      top: auto;
-      left: auto;
-      right: -120px;
-      bottom: -230px;
-      border-color: rgba(181, 110, 255, .17);
-    }
+    /* Support and call to action */
 
-    .store-panel h2 {
-      max-width: 700px;
-      margin: 0 auto 18px;
-    }
-
-    .store-panel p {
-      max-width: 590px;
-      margin: 0 auto 28px;
-      color: #b6c1e0;
-    }
-
-    .store-panel .button {
+    .cta-panel {
       position: relative;
-      z-index: 1;
+      overflow: hidden;
+      padding: clamp(35px, 7vw, 75px) 24px;
+      text-align: center;
+      border: 1px solid #50eaff45;
+      border-radius: 28px;
+      background:
+        radial-gradient(ellipse at 50% 0%, #6d4dff35, transparent 55%),
+        linear-gradient(145deg, #0c1a39, #070b1b);
     }
 
-    /* FOOTER */
+    .cta-panel h2 {
+      max-width: 780px;
+      margin-inline: auto;
+    }
+
+    .cta-panel p {
+      max-width: 650px;
+      margin: 0 auto 26px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* Privacy policy */
+
+    #privacy {
+      background: linear-gradient(180deg, #060b1c, #050817);
+      border-top: 1px solid var(--line);
+    }
+
+    .privacy-intro {
+      max-width: 820px;
+      margin: 0 auto 35px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .policy-panel {
+      max-width: 920px;
+      margin: auto;
+      padding: clamp(22px, 4vw, 42px);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(9, 17, 42, .8);
+    }
+
+    .policy-panel h3 {
+      margin: 31px 0 10px;
+      color: #9cefff;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .policy-panel h3:first-child {
+      margin-top: 0;
+    }
+
+    .policy-panel p,
+    .policy-panel li {
+      color: #c4d0eb;
+      font-size: 13px;
+      line-height: 1.9;
+      overflow-wrap: anywhere;
+    }
+
+    .policy-panel ul {
+      padding-left: 22px;
+    }
+
+    .policy-panel a {
+      color: var(--cyan);
+      text-underline-offset: 3px;
+    }
+
+    .policy-date {
+      margin-top: 25px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: #9aaacb;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    /* Footer */
 
     footer {
-      margin-top: 100px;
-      border-top: 1px solid rgba(142, 161, 255, .14);
-      background: rgba(5, 7, 20, .6);
+      padding: 48px 0 24px;
+      border-top: 1px solid var(--line);
+      background: #030613;
     }
 
-    .footer-main {
+    .footer-grid {
       display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr;
-      gap: 45px;
-      padding: 55px 0 40px;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 38px;
     }
 
-    .footer-description {
-      max-width: 350px;
-      color: #aab5d5;
-      font-size: .9rem;
+    .footer-brand p {
+      max-width: 370px;
       margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
     }
 
-    .footer-column h3 {
-      font-size: .94rem;
-      letter-spacing: 0;
+    .footer-col h3 {
       margin-bottom: 17px;
+      color: var(--cyan);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
-    .footer-links {
-      display: grid;
-      gap: 10px;
-      color: #aab5d5;
-      font-size: .88rem;
+    .footer-col a {
+      display: block;
+      margin: 12px 0;
+      color: #c1cde8;
+      font-size: 13px;
+      text-decoration: none;
     }
 
-    .footer-links a:hover {
+    .footer-col a:hover {
       color: var(--cyan);
     }
 
-    .footer-bottom {
+    .copyright {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-      padding: 22px 0;
-      border-top: 1px solid rgba(142, 161, 255, .12);
-      color: #8491b5;
-      font-size: .8rem;
+      gap: 15px;
+      margin-top: 34px;
+      padding-top: 20px;
+      border-top: 1px solid #ffffff12;
+      color: #8e9cbd;
+      font-size: 11px;
+      line-height: 1.8;
     }
 
-    .footer-bottom a {
-      color: #aab9e1;
+    /* Scroll reveal */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .7s ease, transform .7s ease;
     }
 
-    /* RESPONSIVE */
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-    @media (max-width: 950px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    .back-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 30;
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid #50eaff66;
+      border-radius: 50%;
+      background: #0a1530eF;
+      color: var(--cyan);
+      text-decoration: none;
+      box-shadow: 0 0 22px #367bff20;
+    }
+
+    /* Responsive layout */
+
+    @media (max-width: 900px) {
+      nav {
+        gap: 13px;
       }
 
-      .hero {
-        padding-top: 75px;
-      }
-
-      .hero-copy {
-        text-align: center;
-      }
-
-      .hero-description {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-actions,
-      .hero-proof {
-        justify-content: center;
-      }
-
-      .cosmic-art {
-        min-height: 390px;
+      nav a {
+        font-size: 11px;
       }
 
       .category-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .about-panel {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .about-copy {
-        text-align: center;
-      }
-
-      .about-points {
-        text-align: left;
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    @media (max-width: 700px) {
-      .navbar {
-        padding: 13px 20px;
+    @media (max-width: 680px) {
+      .container {
+        width: min(100% - 32px, var(--max));
+      }
+
+      .nav {
+        min-height: 70px;
       }
 
       .menu-toggle {
         display: block;
       }
 
-      .nav-links {
+      nav {
         display: none;
         position: absolute;
         top: 70px;
-        left: 16px;
-        right: 16px;
-        padding: 20px;
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        background: rgba(8, 11, 33, .97);
-        backdrop-filter: blur(20px);
+        left: 0;
+        right: 0;
+        padding: 18px 22px 22px;
+        background: #050a1af7;
+        border-bottom: 1px solid var(--line);
         flex-direction: column;
         align-items: stretch;
-        gap: 18px;
       }
 
-      .nav-links.open {
+      nav.open {
         display: flex;
       }
 
-      .nav-cta {
-        text-align: center;
-      }
-
-      .container {
-        width: min(100% - 36px, 560px);
+      nav a {
+        padding: 10px 0;
+        font-size: 14px;
       }
 
       .hero {
-        min-height: auto;
-        padding: 75px 0 55px;
+        min-height: 610px;
       }
 
-      .hero h1 {
-        font-size: clamp(2.9rem, 12vw, 4.3rem);
-        letter-spacing: -2.7px;
+      .hero-copy {
+        padding: 75px 0 90px;
       }
 
-      .hero-description {
-        font-size: 1rem;
+      h1 {
+        letter-spacing: -1.7px;
       }
 
-      .cosmic-art {
-        min-height: 320px;
+      .hero p {
+        font-size: 15px;
       }
 
-      .planet {
-        width: 230px;
-      }
-
-      .float-top {
-        right: 0;
-        top: 0;
-      }
-
-      .float-bottom {
-        left: 0;
-        bottom: 0;
-      }
-
-      .floating-card {
-        padding: 10px 12px;
-        gap: 9px;
-      }
-
-      .floating-icon {
-        width: 36px;
-        height: 36px;
-      }
-
-      .floating-card strong {
-        font-size: .8rem;
-      }
-
-      .floating-card small {
-        font-size: .68rem;
-      }
-
-      .section {
-        padding: 75px 0;
-      }
-
-      .stats {
+      .category-grid,
+      .feature-band,
+      .footer-grid {
         grid-template-columns: 1fr;
       }
 
-      .stat {
-        padding: 21px;
-      }
-
-      .stat + .stat {
-        border-left: 0;
-        border-top: 1px solid var(--line);
-      }
-
-      .category-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .category-card {
-        min-height: 190px;
-      }
-
-      .about-panel {
-        padding: 28px 20px;
-      }
-
-      .about-visual {
-        min-height: 240px;
-      }
-
-      .about-symbol {
-        width: 150px;
-        height: 150px;
-        font-size: 4rem;
-      }
-
-      .about-points {
-        grid-template-columns: 1fr;
-      }
-
-      .store-panel {
-        padding: 55px 22px;
-      }
-
-      .footer-main {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
+      .portfolio-callout {
         align-items: flex-start;
+        flex-direction: column;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .scroll-cue {
+        display: none;
+      }
+
+      .copyright {
+        flex-direction: column;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
+      *,
+      *::before,
+      *::after {
         scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
       }
     }
   </style>
 </head>
 
 <body>
+  <div class="stars" aria-hidden="true"></div>
 
-  <div class="universe" aria-hidden="true">
-    <div class="ambient-glow glow-one"></div>
-    <div class="ambient-glow glow-two"></div>
-  </div>
-
-  <header class="site-header">
-    <nav class="navbar" aria-label="Main navigation">
+  <header>
+    <div class="container nav">
       <a class="brand" href="#home" aria-label="Arcadium Labs home">
-        <span class="brand-mark">✦</span>
-        <span>
-          Arcadium Labs
-          <small>Beyond Ordinary Play</small>
-        </span>
+        <span class="brand-mark" aria-hidden="true">A</span>
+        <span class="brand-name">ARCADIUM<span>LABS</span></span>
       </a>
 
-      <button class="menu-toggle" id="menuToggle"
-        aria-label="Open navigation menu"
-        aria-expanded="false">
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="main-nav">
         ☰
       </button>
 
-      <div class="nav-links" id="navLinks">
-        <a href="#home">Home</a>
-        <a href="#categories">Game Categories</a>
-        <a href="#about">Our Studio</a>
-        <a href="#games">Our Games</a>
-        <a class="nav-cta"
-          href="https://play.google.com/store/apps/dev?id=9123354764116988501"
-          target="_blank" rel="noopener noreferrer">
-          Explore Our Games ↗
-        </a>
-      </div>
-    </nav>
+      <nav id="main-nav" aria-label="Main navigation">
+        <a href="#games">Games</a>
+        <a href="#universe">Our universe</a>
+        <a href="#categories">Genres</a>
+        <a href="#support">Support</a>
+        <a href="#privacy">Privacy</a>
+      </nav>
+
+      <a
+        class="button small"
+        href="https://play.google.com/store/apps/dev?id=9123354764116988501"
+        target="_blank"
+        rel="noopener noreferrer">
+        Explore Google Play ↗
+      </a>
+    </div>
   </header>
 
-  <main>
+  <main id="home">
 
-    <!-- HERO SECTION -->
+    <!-- HERO -->
 
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-
-        <div class="hero-copy">
-          <div class="announcement">
-            <span class="announcement-dot"></span>
-            Independent Game Studio
+    <section class="hero">
+      <div class="container">
+        <div class="hero-copy reveal">
+          <div class="eyebrow">
+            <span class="pulse"></span>
+            Independent mobile game studio
           </div>
 
           <h1>
-            Enter a New
-            <span class="gradient-text">Universe</span>
-            of Play.
+            ENTER THE<br>
+            <span class="gradient">ARCADIUM</span><br>
+            UNIVERSE.
           </h1>
 
-          <p class="hero-description">
-            Welcome to Arcadium Labs — where imagination meets
-            interactive entertainment. Discover original mobile
-            gaming experiences, explore new challenges and find
-            your next favourite game.
+          <p>
+            Building next-generation entertainment through clever puzzles,
+            satisfying challenges and mobile experiences designed to spark
+            curiosity.
           </p>
 
-          <div class="hero-actions">
-            <a class="button button-primary"
+          <div class="actions">
+            <a
+              class="button"
               href="https://play.google.com/store/apps/dev?id=9123354764116988501"
-              target="_blank" rel="noopener noreferrer">
-              🎮 Explore Our Games
-              <span>↗</span>
+              target="_blank"
+              rel="noopener noreferrer">
+              ▶ Explore our games
             </a>
 
-            <a class="button button-secondary" href="#categories">
-              Discover Our Categories ↓
+            <a class="button secondary" href="#universe">
+              Discover Arcadium ↓
             </a>
           </div>
 
-          <div class="hero-proof">
-            <span><span class="proof-icon">✦</span> Independent creativity</span>
-            <span><span class="proof-icon">◈</span> Multiple genres</span>
-            <span><span class="proof-icon">◎</span> Mobile gaming</span>
+          <div class="hero-note">
+            26 published games. Countless ways to play.
           </div>
         </div>
+      </div>
 
-        <div class="cosmic-art" aria-label="Cosmic planet illustration">
-          <div class="planet">
-            <div class="planet-core"></div>
-          </div>
-
-          <div class="orbit"></div>
-          <div class="orbit orbit-two"></div>
-
-          <div class="floating-card float-top">
-            <div class="floating-icon">🌌</div>
-            <div>
-              <strong>A Universe of Games</strong>
-              <small>Discover something new</small>
-            </div>
-          </div>
-
-          <div class="floating-card float-bottom">
-            <div class="floating-icon">🎮</div>
-            <div>
-              <strong>26 Games Published</strong>
-              <small>And the journey continues</small>
-            </div>
-          </div>
-        </div>
-
+      <div class="scroll-cue" aria-hidden="true">
+        Scroll to explore ↓
       </div>
     </section>
 
-    <!-- STUDIO STATS -->
+    <!-- STUDIO HIGHLIGHTS -->
 
-    <section class="stats-wrap" aria-label="Studio highlights">
+    <div class="container stats" aria-label="Arcadium Labs highlights">
+      <div class="stat">
+        <strong>26</strong>
+        <span>Published games</span>
+      </div>
+
+      <div class="stat">
+        <strong>PLAY</strong>
+        <span>Pick up and enjoy</span>
+      </div>
+
+      <div class="stat">
+        <strong>THINK</strong>
+        <span>Challenge your mind</span>
+      </div>
+
+      <div class="stat">
+        <strong>REPLAY</strong>
+        <span>Discover another challenge</span>
+      </div>
+    </div>
+
+    <!-- ABOUT ARCADIUM -->
+
+    <section id="universe">
       <div class="container">
-        <div class="stats">
+        <div class="section-head reveal">
+          <div class="kicker">The Arcadium philosophy</div>
 
-          <div class="stat">
-            <div class="stat-number">26</div>
-            <div class="stat-label">Games Published</div>
-          </div>
+          <h2>Small moments. Big brain energy.</h2>
 
-          <div class="stat">
-            <div class="stat-number">Multi-Genre</div>
-            <div class="stat-label">Different Ways to Play</div>
-          </div>
+          <p>
+            Arcadium Labs is an independent mobile game studio creating
+            interactive experiences for curious minds. Our catalogue spans
+            different styles of play, from puzzles and word games to arcade
+            challenges and casual entertainment.
+          </p>
+        </div>
 
-          <div class="stat">
-            <div class="stat-number">Growing</div>
-            <div class="stat-label">A Universe in Progress</div>
-          </div>
+        <div class="feature-band">
+          <article class="feature-panel reveal">
+            <h3>Designed for curiosity</h3>
 
+            <p>
+              We believe games can turn a spare moment into an opportunity
+              to explore, experiment, solve problems and discover something
+              new.
+            </p>
+          </article>
+
+          <article class="feature-panel reveal">
+            <h3>Made for your moment</h3>
+
+            <p>
+              Whether you want a quick distraction or a challenge that makes
+              you think, explore our growing collection and find a style of
+              play that suits you.
+            </p>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- GAME CATEGORIES -->
 
-    <section class="section" id="categories">
+    <section id="categories">
       <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Find your play style</div>
 
-        <div class="section-heading">
-          <div class="eyebrow">Find Your Next Adventure</div>
-          <h2>One Studio. <span class="gradient-text">Many Worlds.</span></h2>
+          <h2>A universe of ways to play.</h2>
+
           <p>
-            From quick-play entertainment to brain-teasing challenges,
-            explore the kinds of experiences that make up the Arcadium
-            Labs gaming universe.
+            Explore the broad genres that make up the Arcadium collection.
+            Our official Google Play developer page is the place to check
+            current game listings and availability.
           </p>
         </div>
 
         <div class="category-grid">
-
-          <article class="category-card"
-            style="--card-glow:#438bff;">
-            <span class="arrow">↗</span>
-            <div class="category-icon">🧩</div>
+          <article class="category reveal">
+            <div class="icon" aria-hidden="true">🧩</div>
             <h3>Puzzle & Logic</h3>
             <p>
-              Put your thinking skills to work with clever puzzles,
-              strategic decisions and satisfying problem-solving.
+              Solve problems, recognise patterns and work through
+              satisfying challenges.
             </p>
           </article>
 
-          <article class="category-card"
-            style="--card-glow:#a05cff;">
-            <span class="arrow">↗</span>
-            <div class="category-icon">⚡</div>
+          <article class="category reveal">
+            <div class="icon" aria-hidden="true">🎮</div>
             <h3>Arcade & Action</h3>
             <p>
-              Jump into energetic gameplay built around quick
-              reactions, exciting challenges and repeat play.
+              Take on quick-play challenges that reward timing,
+              focus and skill.
             </p>
           </article>
 
-          <article class="category-card"
-            style="--card-glow:#32d7ed;">
-            <span class="arrow">↗</span>
-            <div class="category-icon">🧠</div>
+          <article class="category reveal">
+            <div class="icon" aria-hidden="true">🔤</div>
             <h3>Brain & Word Games</h3>
             <p>
-              Challenge your vocabulary, observation, memory
-              and reasoning through interactive brain games.
+              Exercise vocabulary, observation and problem-solving
+              through word-based play.
             </p>
           </article>
 
-          <article class="category-card"
-            style="--card-glow:#ff70d5;">
-            <span class="arrow">↗</span>
-            <div class="category-icon">🎲</div>
+          <article class="category reveal">
+            <div class="icon" aria-hidden="true">✨</div>
             <h3>Casual & Classic</h3>
             <p>
-              Enjoy approachable gameplay and familiar
-              experiences designed for easy pick-up-and-play sessions.
+              Enjoy approachable experiences and familiar styles
+              of mobile entertainment.
             </p>
           </article>
 
-          <article class="category-card"
-            style="--card-glow:#55f0c0;">
-            <span class="arrow">↗</span>
-            <div class="category-icon">♟️</div>
+          <article class="category reveal">
+            <div class="icon" aria-hidden="true">♟️</div>
             <h3>Strategy & Skill</h3>
             <p>
-              Plan your moves, develop your approach and discover
-              experiences where thoughtful choices make a difference.
+              Plan ahead, make decisions and take on challenges
+              that reward careful thinking.
             </p>
           </article>
 
-          <article class="category-card"
-            style="--card-glow:#ffb85c;">
-            <span class="arrow">↗</span>
-            <div class="category-icon">✨</div>
+          <article class="category reveal">
+            <div class="icon" aria-hidden="true">🌌</div>
             <h3>More Experiences</h3>
             <p>
-              Explore other interactive genres and distinctive
-              gaming ideas across our growing collection.
+              Discover other game concepts and experiences across
+              our expanding mobile game portfolio.
             </p>
           </article>
-
         </div>
       </div>
     </section>
 
-    <!-- ABOUT THE STUDIO -->
+    <!-- GAME PORTFOLIO -->
 
-    <section class="section" id="about">
+    <section class="games-section" id="games">
       <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">The Arcadium collection</div>
 
-        <div class="about-panel">
-
-          <div class="about-visual" aria-hidden="true">
-            <div class="about-symbol">✦</div>
-          </div>
-
-          <div class="about-copy">
-            <div class="eyebrow">Who We Are</div>
-
-            <h2>
-              Built on Ideas.
-              <span class="gradient-text">Driven by Play.</span>
-            </h2>
-
-            <p>
-              Arcadium Labs is an independent game studio focused
-              on creating accessible, engaging and varied gaming
-              experiences for mobile players.
-            </p>
-
-            <p>
-              With 26 games published, our collection spans multiple
-              categories and styles. We believe games can entertain,
-              challenge, surprise and bring a little excitement
-              to everyday moments.
-            </p>
-
-            <p>
-              We're building a growing catalogue of experiences
-              while continuing to explore new ideas, mechanics
-              and ways to play.
-            </p>
-
-            <div class="about-points">
-              <div class="about-point">
-                <span>✦</span> Creative game concepts
-              </div>
-              <div class="about-point">
-                <span>✦</span> Multiple gaming genres
-              </div>
-              <div class="about-point">
-                <span>✦</span> Mobile-first experiences
-              </div>
-              <div class="about-point">
-                <span>✦</span> A growing game catalogue
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- GAME STORE CALL TO ACTION -->
-
-    <section class="section store-section" id="games">
-      <div class="container">
-
-        <div class="store-panel">
-          <div class="eyebrow">Your Next Game Awaits</div>
-
-          <h2>
-            Ready to Explore
-            <span class="gradient-text">Our Universe?</span>
-          </h2>
+          <h2>Find your next <span class="gradient">favourite.</span></h2>
 
           <p>
-            Discover the Arcadium Labs catalogue on Google Play.
-            Browse our published games, find a genre you love
-            and choose your next adventure.
+            Twenty-six published games and a range of ways to play.
+            Rather than maintaining a duplicate game catalogue here,
+            visit our official developer page for the current listings.
           </p>
-
-          <a class="button button-primary"
-            href="https://play.google.com/store/apps/dev?id=9123354764116988501"
-            target="_blank" rel="noopener noreferrer">
-            View Arcadium Labs on Google Play ↗
-          </a>
         </div>
 
+        <div class="portfolio-callout reveal">
+          <div class="portfolio-orbit" aria-hidden="true">A</div>
+
+          <div style="flex:1">
+            <div class="kicker">One portal. The full collection.</div>
+
+            <h3>Explore Arcadium on Google Play.</h3>
+
+            <p>
+              Browse our published games, check availability and open
+              the official listing for the game you want to play.
+            </p>
+          </div>
+
+          <a
+            class="button"
+            href="https://play.google.com/store/apps/dev?id=9123354764116988501"
+            target="_blank"
+            rel="noopener noreferrer">
+            View all published games ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUPPORT -->
+
+    <section id="support">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Here to help</div>
+
+          <h2>Player support & trust.</h2>
+
+          <p>
+            Need help with one of our games? Start with the support
+            contact or support information published on the relevant
+            Google Play listing.
+          </p>
+        </div>
+
+        <div class="feature-band">
+          <article class="feature-panel reveal">
+            <h3>Game support</h3>
+
+            <p>
+              For technical issues, crashes, gameplay questions,
+              compatibility concerns or purchase enquiries, use the
+              support information for the relevant app.
+            </p>
+
+            <a
+              class="button secondary"
+              href="https://play.google.com/store/apps/dev?id=9123354764116988501"
+              target="_blank"
+              rel="noopener noreferrer">
+              Find app support ↗
+            </a>
+          </article>
+
+          <article class="feature-panel reveal">
+            <h3>Privacy & data</h3>
+
+            <p>
+              Learn how privacy-related requests, personal information,
+              advertising technologies and third-party services are
+              addressed in our privacy information below.
+            </p>
+
+            <a class="button secondary" href="#privacy">
+              Read privacy policy ↓
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CALL TO ACTION -->
+
+    <section>
+      <div class="container">
+        <div class="cta-panel reveal">
+          <div class="kicker">Your next adventure awaits</div>
+
+          <h2>Find your next favourite way to play.</h2>
+
+          <p>
+            Enter the Arcadium universe and explore our published
+            mobile games on Google Play.
+          </p>
+
+          <a
+            class="button"
+            href="https://play.google.com/store/apps/dev?id=9123354764116988501"
+            target="_blank"
+            rel="noopener noreferrer">
+            Enter Google Play ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIVACY POLICY -->
+
+    <section id="privacy">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Transparency & privacy</div>
+          <h2>Privacy Policy</h2>
+          <p>
+            How Arcadium Labs approaches personal information and
+            privacy across its website and mobile games.
+          </p>
+        </div>
+
+        <div class="privacy-intro reveal">
+          <p>
+            This policy is intended to explain the types of information
+            that may be processed through Arcadium Labs' website and
+            mobile games, why that information may be needed, and the
+            choices available to users.
+          </p>
+
+          <p>
+            Different games may use different technologies and services.
+            The information actually collected depends on the particular
+            game, its configuration and the services enabled in it.
+          </p>
+        </div>
+
+        <article class="policy-panel reveal">
+
+          <h3>1. Scope of this policy</h3>
+
+          <p>
+            This Privacy Policy applies to the Arcadium Labs website and
+            the mobile games or related services to which this policy
+            is linked. Individual games may provide additional privacy
+            disclosures where their features or third-party services
+            require them.
+          </p>
+
+          <h3>2. Information that may be processed</h3>
+
+          <p>
+            Depending on the website or game you use, information that
+            may be processed includes:
+          </p>
+
+          <ul>
+            <li>
+              <strong>Technical information:</strong> device type,
+              operating system, app version, language, and diagnostic
+              information needed to troubleshoot technical issues.
+            </li>
+            <li>
+              <strong>Usage information:</strong> game interactions,
+              gameplay progress, performance events and crash reports,
+              where these features or services are enabled.
+            </li>
+            <li>
+              <strong>Advertising information:</strong> advertising
+              identifiers, ad interactions or related information
+              processed by advertising providers, where advertising
+              services are used.
+            </li>
+            <li>
+              <strong>Messages and support information:</strong>
+              information you choose to provide when contacting us
+              or submitting a support request.
+            </li>
+            <li>
+              <strong>Purchase information:</strong> transaction-related
+              information made available through the relevant app store
+              or payment provider. Payment card details are handled
+              according to that provider's systems and policies.
+            </li>
+          </ul>
+
+          <p>
+            This list describes categories that may apply. It is not
+            a claim that every Arcadium Labs game collects every type
+            of information listed above.
+          </p>
+
+          <h3>3. How information may be used</h3>
+
+          <p>Information may be used, where applicable, to:</p>
+
+          <ul>
+            <li>Provide and operate the website and mobile games.</li>
+            <li>Maintain game functionality and remember game progress where supported.</li>
+            <li>Identify crashes, errors, bugs and performance problems.</li>
+            <li>Respond to questions and support requests.</li>
+            <li>Process or help resolve purchase-related enquiries.</li>
+            <li>Display and measure advertisements where advertising is enabled.</li>
+            <li>Protect services against fraud, abuse and technical threats.</li>
+            <li>Meet applicable legal and platform requirements.</li>
+          </ul>
+
+          <h3>4. Advertising and third-party services</h3>
+
+          <p>
+            Some games may use third-party providers for advertising,
+            analytics, crash reporting, app distribution or other
+            functionality. These providers may process information
+            according to their own privacy policies and the settings
+            enabled in the relevant game.
+          </p>
+
+          <p>
+            If Google AdMob or another advertising service is integrated
+            into a particular game, that provider may process device
+            information, advertising identifiers, ad interaction
+            information and other data as described in its disclosures.
+            Personalised advertising and tracking behaviour may depend
+            on applicable law, consent requirements, device settings
+            and provider configuration.
+          </p>
+
+          <p>
+            Google Play also processes information in connection with
+            distributing apps and operating its services. Review the
+            relevant provider's privacy information for details.
+          </p>
+
+          <p>
+            Google privacy information:
+            <a
+              href="https://policies.google.com/privacy"
+              target="_blank"
+              rel="noopener noreferrer">
+              https://policies.google.com/privacy
+            </a>
+          </p>
+
+          <h3>5. Cookies and website technologies</h3>
+
+          <p>
+            The website may use essential technical features to display
+            content and operate correctly. Third-party resources, such
+            as externally hosted fonts, may result in requests to their
+            providers when a page loads.
+          </p>
+
+          <p>
+            Any analytics, advertising cookies, tracking pixels or
+            similar technologies must be disclosed and managed
+            according to the technologies actually deployed and the
+            legal requirements that apply. Where consent is required,
+            it should be obtained before the relevant non-essential
+            technologies are activated.
+          </p>
+
+          <h3>6. Data storage and retention</h3>
+
+          <p>
+            Information may be retained for as long as reasonably
+            necessary to provide the relevant service, maintain
+            security, resolve support requests, meet legal obligations
+            or address disputes. Retention periods depend on the type
+            of information and the service processing it.
+          </p>
+
+          <p>
+            Some games may store gameplay progress or settings locally
+            on a device. Other games may use platform or third-party
+            services. The actual storage method varies by game.
+          </p>
+
+          <h3>7. Sharing of information</h3>
+
+          <p>
+            Personal information is not intended to be sold by
+            Arcadium Labs. Information may be shared where necessary
+            with service providers operating relevant features, app
+            distribution platforms, professional advisers, or
+            competent authorities where legally required.
+          </p>
+
+          <p>
+            Any such sharing should be limited to an appropriate
+            purpose and governed by applicable legal, contractual
+            and privacy requirements.
+          </p>
+
+          <h3>8. Children's privacy</h3>
+
+          <p>
+            Children's privacy is important. The applicable age
+            requirements, content ratings, advertising configuration
+            and parental-consent obligations depend on each game's
+            intended audience, features and distribution regions.
+          </p>
+
+          <p>
+            Games intended for children must use appropriate
+            safeguards and comply with applicable children's privacy
+            laws and Google Play Families requirements where relevant.
+            Do not submit personal information through a game or
+            website unless it is appropriate and authorised to do so.
+          </p>
+
+          <h3>9. Security</h3>
+
+          <p>
+            Reasonable technical and organisational measures should be
+            used to protect information against unauthorised access,
+            loss, misuse or disclosure. No website, application,
+            transmission method or storage system can be guaranteed
+            completely secure.
+          </p>
+
+          <h3>10. Your privacy rights and choices</h3>
+
+          <p>
+            Depending on your location and the laws that apply, you
+            may have rights to request access to, correction of,
+            deletion of or restrictions on the processing of personal
+            information. You may also have rights to object to certain
+            processing or withdraw consent where consent is the
+            applicable legal basis.
+          </p>
+
+          <p>
+            You can also review available device-level advertising
+            privacy controls and the settings offered by relevant
+            third-party providers.
+          </p>
+
+          <p>
+            Requests may be submitted through the support contact
+            published on the relevant Google Play app listing.
+            Please identify the relevant game and describe your
+            request without including passwords, payment card details
+            or other unnecessary sensitive information.
+          </p>
+
+          <h3>11. International processing</h3>
+
+          <p>
+            Some service providers may process information in
+            countries other than your own. Where required, appropriate
+            safeguards should be used for international transfers
+            in accordance with applicable data protection law.
+          </p>
+
+          <h3>12. Changes to this policy</h3>
+
+          <p>
+            This policy may be updated when our games, services,
+            technologies or legal obligations change. The updated
+            version should be published here with a revised effective
+            date. Material changes may require additional notice
+            where applicable.
+          </p>
+
+          <h3>13. Contact and privacy requests</h3>
+
+          <p>
+            To contact Arcadium Labs about privacy, data access,
+            correction or deletion requests, use the support
+            information published on the relevant app listing:
+          </p>
+
+          <p>
+            <a
+              href="https://play.google.com/store/apps/dev?id=9123354764116988501"
+              target="_blank"
+              rel="noopener noreferrer">
+              Arcadium Labs — Official Google Play developer page ↗
+            </a>
+          </p>
+
+          <p>
+            This website does not publish a dedicated privacy email
+            address because a verified address has not been supplied.
+            Add your official support or privacy email here once it
+            has been established and monitored.
+          </p>
+
+          <div class="policy-date">
+            <strong>Effective date:</strong> 12 October 2026<br>
+            <strong>Policy owner:</strong> Arcadium Labs<br>
+            <strong>Review:</strong> Update this policy when data
+            practices, integrations or applicable requirements change.
+          </div>
+
+        </article>
       </div>
     </section>
 
@@ -1399,84 +1484,115 @@
 
   <footer>
     <div class="container">
+      <div class="footer-grid">
 
-      <div class="footer-main">
-
-        <div>
+        <div class="footer-brand">
           <a class="brand" href="#home">
-            <span class="brand-mark">✦</span>
-            <span>
-              Arcadium Labs
-              <small>Beyond Ordinary Play</small>
-            </span>
+            <span class="brand-mark" aria-hidden="true">A</span>
+            <span class="brand-name">ARCADIUM<span>LABS</span></span>
           </a>
 
-          <p class="footer-description">
-            An independent game studio creating interactive
-            entertainment across multiple gaming genres.
-            26 games published — and more ideas ahead.
+          <p>
+            Building next-generation entertainment through mobile
+            games that invite players to think, explore and play.
           </p>
         </div>
 
-        <div class="footer-column">
+        <div class="footer-col">
           <h3>Explore</h3>
-          <div class="footer-links">
-            <a href="#home">Home</a>
-            <a href="#categories">Game Categories</a>
-            <a href="#about">About Arcadium Labs</a>
-            <a href="#games">Our Games</a>
-          </div>
+          <a href="#games">Game collection</a>
+          <a href="#categories">Game genres</a>
+          <a href="#universe">About Arcadium</a>
+
+          <a
+            href="https://play.google.com/store/apps/dev?id=9123354764116988501"
+            target="_blank"
+            rel="noopener noreferrer">
+            Google Play portfolio ↗
+          </a>
         </div>
 
-        <div class="footer-column">
-          <h3>Play With Us</h3>
-          <div class="footer-links">
-            <a
-              href="https://play.google.com/store/apps/dev?id=9123354764116988501"
-              target="_blank" rel="noopener noreferrer">
-              Google Play Developer Page ↗
-            </a>
-          </div>
+        <div class="footer-col">
+          <h3>Information</h3>
+          <a href="#privacy">Privacy Policy</a>
+          <a href="#support">Player Support</a>
+          <a href="#home">Back to top ↑</a>
         </div>
 
       </div>
 
-      <div class="footer-bottom">
+      <div class="copyright">
         <span>
           © <span id="year"></span> Arcadium Labs. All rights reserved.
         </span>
-        <a href="#home">Back to the top ↑</a>
-      </div>
 
+        <span>
+          Google Play is a trademark of Google LLC.
+          Game availability may vary by region.
+        </span>
+      </div>
     </div>
   </footer>
 
-  <script>
-    const menuToggle = document.getElementById("menuToggle");
-    const navLinks = document.getElementById("navLinks");
+  <a class="back-top" href="#home" aria-label="Back to top">↑</a>
 
-    menuToggle.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.setAttribute(
+  <script>
+    // Mobile navigation
+    const menuButton = document.querySelector(".menu-toggle");
+    const nav = document.querySelector("#main-nav");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("open");
+
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute(
         "aria-label",
-        isOpen ? "Close navigation menu" : "Open navigation menu"
+        isOpen ? "Close navigation" : "Open navigation"
       );
-      menuToggle.textContent = isOpen ? "✕" : "☰";
+
+      menuButton.textContent = isOpen ? "×" : "☰";
     });
 
-    document.querySelectorAll("#navLinks a").forEach(link => {
+    // Close the menu after selecting a link
+    nav.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Open navigation menu");
-        menuToggle.textContent = "☰";
+        nav.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation");
+        menuButton.textContent = "☰";
       });
     });
 
-    document.getElementById("year").textContent =
+    // Automatic copyright year
+    document.querySelector("#year").textContent =
       new Date().getFullYear();
-  </script>
 
+    // Scroll reveal animations
+    const revealElements = document.querySelectorAll(".reveal");
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if ("IntersectionObserver" in window && !reduceMotion) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12
+      });
+
+      revealElements.forEach(element => {
+        observer.observe(element);
+      });
+    } else {
+      revealElements.forEach(element => {
+        element.classList.add("visible");
+      });
+    }
+  </script>
 </body>
 </html>
