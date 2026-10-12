@@ -1012,3 +1012,989 @@
   </footer>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#030613">
+
+  <title>Arcadium Labs | Next-Generation Entertainment</title>
+  <meta name="description" content="Enter the Arcadium Labs universe. Discover mobile puzzle, word, logic and casual games built to challenge your mind.">
+
+  <meta property="og:title" content="Arcadium Labs">
+  <meta property="og:description" content="Building next-generation entertainment. Explore our mobile games.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://arcadium-labs-website.vercel.app/assets/arcadium-cosmic-hero.png">
+
+  <!-- Browser tab icons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #030613;
+      --panel: #0a1229;
+      --cyan: #50eaff;
+      --blue: #367bff;
+      --violet: #a45cff;
+      --text: #f4f7ff;
+      --muted: #b8c6e9;
+      --line: rgba(119,180,255,.2);
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+    button, input { font: inherit; }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: auto;
+    }
+
+    /* Animated cosmic starfield */
+    .stars {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .5;
+      background-image:
+        radial-gradient(1px 1px at 10% 20%, #fff 98%, transparent),
+        radial-gradient(2px 2px at 70% 30%, #50eaff 98%, transparent),
+        radial-gradient(1px 1px at 40% 80%, #a45cff 98%, transparent);
+      background-size: 250px 250px, 350px 350px, 300px 300px;
+      animation: starDrift 70s linear infinite;
+    }
+
+    @keyframes starDrift {
+      to { transform: translate(-45px, 35px); }
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(3,6,19,.85);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--cyan);
+      border-radius: 12px;
+      background: linear-gradient(145deg, #168cdb55, #a45cff55);
+      box-shadow: 0 0 25px #367bff44;
+      color: var(--cyan);
+      font: 800 25px Orbitron, sans-serif;
+    }
+
+    .brand-name {
+      font: 800 16px Orbitron, sans-serif;
+      letter-spacing: 2px;
+    }
+
+    .brand-name span {
+      display: block;
+      margin-top: 4px;
+      color: var(--cyan);
+      font-size: 10px;
+      letter-spacing: 7px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 23px;
+    }
+
+    nav a {
+      color: #d5def7;
+      font-size: 13px;
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    nav a:hover { color: var(--cyan); }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 9px 12px;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Buttons */
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 21px;
+      border: 1px solid #50eaff77;
+      border-radius: 999px;
+      background: linear-gradient(100deg, #168cdb, #5b54e8 65%, #8d4bdf);
+      color: white;
+      font-weight: 800;
+      font-size: 13px;
+      text-decoration: none;
+      box-shadow: 0 8px 30px #367bff30;
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px #367bff66;
+    }
+
+    .button.secondary {
+      background: #071027cc;
+      border-color: #9abaff55;
+      box-shadow: none;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 680px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      isolation: isolate;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, #020512f5 0%, #020512c9 42%, #02051222 100%),
+        linear-gradient(0deg, var(--bg), transparent 35%),
+        url("assets/arcadium-cosmic-hero.png") center/cover no-repeat;
+      animation: heroEnter 1.3s ease-out both;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: radial-gradient(ellipse at 75% 55%, #5a43ff20, transparent 40%);
+    }
+
+    @keyframes heroEnter {
+      from { opacity: .2; transform: scale(1.06); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .hero-copy {
+      max-width: 690px;
+      padding: 95px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 14px;
+      border: 1px solid #50eaff55;
+      border-radius: 999px;
+      background: #07132cbb;
+      color: #baf7ff;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 14px var(--cyan);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      50% { opacity: .35; }
+    }
+
+    h1 {
+      margin: 27px 0 24px;
+      font: 800 clamp(42px, 7vw, 82px)/1.02 Orbitron, sans-serif;
+      letter-spacing: -2px;
+    }
+
+    .gradient {
+      background: linear-gradient(95deg, #fff, #7defff 38%, #9b7bff 75%, #df9cff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 570px;
+      color: #d0dcf5;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 28px;
+    }
+
+    .hero-note {
+      margin-top: 20px;
+      color: #a9b8d9;
+      font-size: 12px;
+    }
+
+    /* Sections */
+    section { padding: 90px 0; }
+
+    .section-head {
+      max-width: 750px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .kicker {
+      margin-bottom: 14px;
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font: 700 clamp(28px, 4vw, 45px)/1.2 Orbitron, sans-serif;
+      letter-spacing: -1px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .stat {
+      padding: 26px;
+      border: 1px solid var(--line);
+      background: #09122ad9;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      margin-bottom: 9px;
+      color: var(--cyan);
+      font: 700 24px Orbitron, sans-serif;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .category-grid, .game-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .category, .game-card, .feature-panel {
+      border: 1px solid var(--line);
+      border-radius: 19px;
+      background: linear-gradient(145deg, #101c3bcc, #070c1fef);
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+
+    .category {
+      padding: 25px;
+    }
+
+    .category:hover, .game-card:hover, .feature-panel:hover {
+      transform: translateY(-5px);
+      border-color: #50eaff88;
+      box-shadow: 0 18px 45px #0004;
+    }
+
+    .category .icon {
+      margin-bottom: 18px;
+      font-size: 29px;
+    }
+
+    .category h3, .game-card h3 {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .category p, .game-card p, .feature-panel p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .games-section {
+      background: linear-gradient(180deg, transparent, #09122a80, transparent);
+    }
+
+    .games-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .games-toolbar p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .search {
+      width: min(100%, 310px);
+      padding: 13px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      outline: none;
+      background: #080f25;
+      color: white;
+    }
+
+    .search:focus { border-color: var(--cyan); }
+
+    .game-card {
+      min-height: 225px;
+      padding: 23px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .game-symbol {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      border-radius: 15px;
+      background: linear-gradient(140deg, #1e9be8, #764df2);
+      font-size: 23px;
+    }
+
+    .game-card p { flex: 1; }
+
+    .game-card a {
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .game-card a:hover { text-decoration: underline; }
+
+    .empty-state {
+      display: none;
+      grid-column: 1 / -1;
+      padding: 30px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .feature-band {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .feature-panel { padding: 30px; }
+
+    .feature-panel h3 {
+      font: 600 18px Orbitron, sans-serif;
+    }
+
+    .cta-panel {
+      padding: clamp(35px, 7vw, 75px) 24px;
+      border: 1px solid #50eaff55;
+      border-radius: 26px;
+      background: radial-gradient(ellipse at top, #6d4dff30, transparent 55%), #091127;
+      text-align: center;
+    }
+
+    .cta-panel p {
+      max-width: 650px;
+      margin: 0 auto 25px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    footer {
+      padding: 45px 0 24px;
+      border-top: 1px solid var(--line);
+      background: #030613;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 35px;
+    }
+
+    .footer-brand p {
+      max-width: 370px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .footer-col h3 {
+      color: var(--cyan);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .footer-col a {
+      display: block;
+      margin: 12px 0;
+      color: #c1cde8;
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .footer-col a:hover { color: var(--cyan); }
+
+    .copyright {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid #ffffff12;
+      color: #8e9cbd;
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    [hidden] { display: none !important; }
+
+    :focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 850px) {
+      nav { gap: 12px; }
+      nav a { font-size: 12px; }
+      .category-grid, .game-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+      .hero::before {
+        background:
+          linear-gradient(90deg, #020512f2, #02051299),
+          linear-gradient(0deg, var(--bg), transparent 35%),
+          url("assets/arcadium-cosmic-hero.png") 62% center/cover no-repeat;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: calc(100% - 32px); }
+      .nav { min-height: 70px; }
+      .menu-toggle { display: block; }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        padding: 18px 22px;
+        background: #050a1af7;
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      nav.open { display: flex; }
+      nav a { padding: 9px 0; font-size: 14px; }
+      .hero { min-height: 620px; }
+      .hero-copy { padding: 70px 0; }
+      h1 { letter-spacing: -1.5px; }
+      .hero p { font-size: 15px; }
+      .stats, .category-grid, .game-grid, .feature-band, .footer-grid { grid-template-columns: 1fr; }
+      .stat { border-radius: 12px; }
+      .games-toolbar { align-items: stretch; flex-direction: column; }
+      .search { width: 100%; }
+      section { padding: 68px 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stars" aria-hidden="true"></div>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Arcadium Labs home">
+        <span class="brand-mark" aria-hidden="true">A</span>
+        <span class="brand-name">ARCADIUM<span>LABS</span></span>
+      </a>
+
+      <button class="menu-toggle" aria-label="Open navigation"
+        aria-expanded="false" aria-controls="main-nav">☰</button>
+
+      <nav id="main-nav" aria-label="Main navigation">
+        <a href="#games">Games</a>
+        <a href="#universe">Our Universe</a>
+        <a href="#categories">Genres</a>
+        <a href="#support">Support</a>
+        <a href="/privacy-policy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span class="pulse"></span> Independent Mobile Game Studio</div>
+
+          <h1>ENTER THE<br><span class="gradient">ARCADIUM</span><br>UNIVERSE.</h1>
+
+          <p>
+            Building next-generation entertainment through clever puzzles,
+            satisfying challenges and mobile experiences made to spark curiosity.
+          </p>
+
+          <div class="actions">
+            <a class="button"
+              href="https://play.google.com/store/apps/dev?id=9123354764116988501"
+              target="_blank" rel="noopener noreferrer">
+              Explore Our Games ↗
+            </a>
+            <a class="button secondary" href="#universe">Discover Arcadium ↓</a>
+          </div>
+
+          <div class="hero-note">
+            Discover our published games on Google Play.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container stats" aria-label="Studio highlights">
+      <div class="stat"><strong>PLAY</strong><span>Pick up and enjoy</span></div>
+      <div class="stat"><strong>THINK</strong><span>Challenge your mind</span></div>
+      <div class="stat"><strong>REPLAY</strong><span>Find a new favourite</span></div>
+    </div>
+
+    <section id="universe">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">The Arcadium Philosophy</div>
+          <h2>Small Moments. Big Brain Energy.</h2>
+          <p>
+            We create approachable mobile games focused on clear mechanics,
+            rewarding progress and experiences players can return to whenever
+            they have a moment to play.
+          </p>
+        </div>
+
+        <div class="feature-band">
+          <article class="feature-panel reveal">
+            <h3>Designed for Curiosity</h3>
+            <p>
+              From wordplay to logic challenges, we aim to make every session
+              an opportunity to explore, experiment and discover a solution.
+            </p>
+          </article>
+
+          <article class="feature-panel reveal">
+            <h3>Made for Your Moment</h3>
+            <p>
+              Whether you have a spare minute or want a longer challenge,
+              explore our growing catalogue of mobile experiences.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="categories">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Find Your Play Style</div>
+          <h2>A Universe of Ways to Play.</h2>
+          <p>
+            Explore different challenges and visit our official Google Play
+            portfolio for the current catalogue and availability.
+          </p>
+        </div>
+
+        <div class="category-grid">
+          <article class="category reveal">
+            <div class="icon">🧩</div>
+            <h3>Puzzle Games</h3>
+            <p>Pattern recognition, sorting challenges and satisfying problem-solving.</p>
+          </article>
+
+          <article class="category reveal">
+            <div class="icon">🔤</div>
+            <h3>Word Games</h3>
+            <p>Explore vocabulary, word searches and language-based challenges.</p>
+          </article>
+
+          <article class="category reveal">
+            <div class="icon">🧠</div>
+            <h3>Logic & Strategy</h3>
+            <p>Plan ahead and work your way through clever brain teasers.</p>
+          </article>
+
+          <article class="category reveal">
+            <div class="icon">🎮</div>
+            <h3>Arcade & Action</h3>
+            <p>Quick rounds and challenges built around timing and skill.</p>
+          </article>
+
+          <article class="category reveal">
+            <div class="icon">✨</div>
+            <h3>Casual Games</h3>
+            <p>Approachable experiences for a relaxed break or a new personal best.</p>
+          </article>
+
+          <article class="category reveal">
+            <div class="icon">♟️</div>
+            <h3>Classic Experiences</h3>
+            <p>Familiar game styles adapted for convenient mobile play.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="games-section" id="games">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Your Next Favourite Game</div>
+          <h2>Explore the Catalogue.</h2>
+          <p>
+            Discover featured titles or visit the official developer page
+            for the complete published catalogue.
+          </p>
+        </div>
+
+        <div class="games-toolbar">
+          <p>Featured titles · Search by name or genre</p>
+          <input class="search" id="game-search" type="search"
+            placeholder="Search games…" aria-label="Search featured games">
+        </div>
+
+        <div class="game-grid" id="game-grid">
+          <article class="game-card reveal" data-search="odd word out word puzzle">
+            <div class="game-symbol">🔎</div>
+            <h3>Odd Word Out</h3>
+            <p>Spot the word that does not belong and test your vocabulary.</p>
+            <a href="https://play.google.com/store/apps/dev?id=9123354764116988501"
+              target="_blank" rel="noopener noreferrer">Find on Google Play ↗</a>
+          </article>
+
+          <article class="game-card reveal" data-search="maze solver elite maze logic">
+            <div class="game-symbol">🌀</div>
+            <h3>Maze Solver Elite</h3>
+            <p>Find your route through maze challenges and sharpen your planning.</p>
+            <a href="https://play.google.com/store/apps/dev?id=9123354764116988501"
+              target="_blank" rel="noopener noreferrer">Find on Google Play ↗</a>
+          </article>
+
+          <article class="game-card reveal" data-search="word search elite word puzzle">
+            <div class="game-symbol">🔤</div>
+            <h3>Word Search Elite</h3>
+            <p>Search the grid, spot hidden words and exercise your focus.</p>
+            <a href="https://play.google.com/store/apps/dev?id=9123354764116988501"
+              target="_blank" rel="noopener noreferrer">Find on Google Play ↗</a>
+          </article>
+
+          <article class="game-card reveal" data-search="sudoku elite number logic">
+            <div class="game-symbol">🔢</div>
+            <h3>Sudoku Elite</h3>
+            <p>Enjoy a classic number puzzle built around logic and concentration.</p>
+            <a href="https://play.google.com/store/apps/dev?id=9123354764116988501"
+              target="_blank" rel="noopener noreferrer">Find on Google Play ↗</a>
+          </article>
+
+          <article class="game-card reveal" data-search="riddle word puzzle brain teaser">
+            <div class="game-symbol">💡</div>
+            <h3>Riddle Word Puzzle</h3>
+            <p>Think sideways, read carefully and work out the answer.</p>
+            <a href="https://play.google.com/store/apps/dev?id=9123354764116988501"
+              target="_blank" rel="noopener noreferrer">Find on Google Play ↗</a>
+          </article>
+
+          <article class="game-card reveal" data-search="hoop sort elite sorting puzzle">
+            <div class="game-symbol">🏀</div>
+            <h3>Hoop Sort Elite</h3>
+            <p>Sort, organise and solve satisfying colour-based challenges.</p>
+            <a href="https://play.google.com/store/apps/dev?id=9123354764116988501"
+              target="_blank" rel="noopener noreferrer">Find on Google Play ↗</a>
+          </article>
+        </div>
+
+        <div class="empty-state" id="empty-state">
+          No featured games match your search. Try another title or genre.
+        </div>
+
+        <div style="text-align:center;margin-top:30px">
+          <a class="button"
+            href="https://play.google.com/store/apps/dev?id=9123354764116988501"
+            target="_blank" rel="noopener noreferrer">
+            View Full Google Play Portfolio ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="support">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Here to Help</div>
+          <h2>Player Support & Trust.</h2>
+          <p>
+            For game-specific support, use the developer contact shown on
+            the relevant Google Play listing.
+          </p>
+        </div>
+
+        <div class="feature-band">
+          <article class="feature-panel reveal">
+            <h3>Game Support</h3>
+            <p>
+              For crashes, gameplay issues, compatibility questions or purchase
+              concerns, start with the relevant app's Google Play listing.
+            </p>
+            <a class="button secondary"
+              href="https://play.google.com/store/apps/dev?id=9123354764116988501"
+              target="_blank" rel="noopener noreferrer">Find App Support ↗</a>
+          </article>
+
+          <article class="feature-panel reveal">
+            <h3>Privacy & Data</h3>
+            <p>
+              Learn about privacy practices, potential data processing,
+              advertising services and privacy requests.
+            </p>
+            <a class="button secondary" href="/privacy-policy.html">Read Privacy Policy →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta-panel reveal">
+          <div class="kicker">Your Next Adventure Awaits</div>
+          <h2>Find Your Next Favourite Way to Play.</h2>
+          <p>
+            Explore the Arcadium Labs catalogue on Google Play and discover
+            games for your kind of challenge.
+          </p>
+          <a class="button"
+            href="https://play.google.com/store/apps/dev?id=9123354764116988501"
+            target="_blank" rel="noopener noreferrer">Enter Google Play ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="#home">
+            <span class="brand-mark" aria-hidden="true">A</span>
+            <span class="brand-name">ARCADIUM<span>LABS</span></span>
+          </a>
+          <p>
+            Building next-generation entertainment through mobile games
+            that invite players to think, explore and play.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Explore</h3>
+          <a href="#games">Featured Games</a>
+          <a href="#categories">Game Genres</a>
+          <a href="https://play.google.com/store/apps/dev?id=9123354764116988501"
+            target="_blank" rel="noopener noreferrer">Google Play Portfolio ↗</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Information</h3>
+          <a href="/privacy-policy.html">Privacy Policy</a>
+          <a href="https://play.google.com/store/apps/dev?id=9123354764116988501"
+            target="_blank" rel="noopener noreferrer">App Listings & Support ↗</a>
+          <a href="#support">Player Support</a>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <span>© <span id="year"></span> Arcadium Labs. All rights reserved.</span>
+        <span>Google Play is a trademark of Google LLC.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation
+    const menuButton = document.querySelector(".menu-toggle");
+    const nav = document.querySelector("#main-nav");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation" : "Open navigation"
+      );
+      menuButton.textContent = isOpen ? "×" : "☰";
+    });
+
+    nav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.textContent = "☰";
+      });
+    });
+
+    // Featured game search
+    const search = document.querySelector("#game-search");
+    const cards = [...document.querySelectorAll(".game-card")];
+    const emptyState = document.querySelector("#empty-state");
+
+    search.addEventListener("input", () => {
+      const query = search.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const content = (
+          card.dataset.search + " " + card.innerText
+        ).toLowerCase();
+
+        const matches = content.includes(query);
+        card.hidden = !matches;
+
+        if (matches) visibleCount++;
+      });
+
+      emptyState.style.display = visibleCount ? "none" : "block";
+    });
+
+    // Dynamic copyright year
+    document.querySelector("#year").textContent =
+      new Date().getFullYear();
+
+    // Reveal elements as they enter the viewport
+    const revealElements = document.querySelectorAll(".reveal");
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if ("IntersectionObserver" in window && !reduceMotion) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealElements.forEach(element => observer.observe(element));
+    } else {
+      revealElements.forEach(element => element.classList.add("visible"));
+    }
+  </script>
+</body>
+</html>
