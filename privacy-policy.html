@@ -1,209 +1,357 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy | Arcadium Labs</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#030613">
 
-<style>
-body{
-    margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:#050018;
-    color:#ffffff;
-    line-height:1.7;
-}
+  <title>Privacy Policy | Arcadium Labs</title>
+  <meta name="description" content="Read the Arcadium Labs privacy policy for our website and mobile games.">
 
-header{
-    background:linear-gradient(90deg,#050018,#0d1035);
-    padding:30px;
-    border-bottom:1px solid rgba(255,255,255,0.1);
-}
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico">
 
-.logo{
-    font-size:2rem;
-    font-weight:bold;
-    color:#8e6cff;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:50px 20px;
-}
+  <style>
+    :root {
+      --bg: #030613;
+      --panel: #0a1229;
+      --line: rgba(119,180,255,.2);
+      --text: #f4f7ff;
+      --muted: #bdc9e4;
+      --cyan: #50eaff;
+    }
 
-.card{
-    background:#0d1636;
-    border-radius:16px;
-    padding:40px;
-    border:1px solid rgba(255,255,255,0.08);
-    box-shadow:0 0 25px rgba(88,120,255,0.15);
-}
+    * { box-sizing: border-box; }
 
-h1{
-    color:#6ee7ff;
-    font-size:3rem;
-    margin-bottom:10px;
-}
+    body {
+      margin: 0;
+      background: radial-gradient(ellipse at top right, #17245b55, transparent 40%), var(--bg);
+      color: var(--text);
+      font-family: Inter, Arial, sans-serif;
+      line-height: 1.8;
+    }
 
-h2{
-    color:#ffd93d;
-    margin-top:35px;
-}
+    .wrap {
+      width: min(900px, calc(100% - 36px));
+      margin: auto;
+    }
 
-p,li{
-    color:#d9e2ff;
-}
+    header {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
 
-a{
-    color:#6ee7ff;
-}
+    .brand {
+      color: white;
+      font: 700 16px Orbitron, sans-serif;
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
 
-.footer{
-    text-align:center;
-    padding:30px;
-    color:#8b95c9;
-}
-</style>
+    .brand span { color: var(--cyan); }
+
+    .back {
+      float: right;
+      color: var(--cyan);
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .hero { padding: 60px 0 25px; }
+
+    .kicker {
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    h1, h2 {
+      font-family: Orbitron, sans-serif;
+      line-height: 1.4;
+    }
+
+    h1 {
+      margin: 12px 0;
+      font-size: clamp(30px, 5vw, 46px);
+    }
+
+    h2 {
+      margin-top: 34px;
+      color: #a8dfff;
+      font-size: 18px;
+    }
+
+    p, li {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    a { color: var(--cyan); }
+
+    .updated {
+      color: #8fa3cb;
+      font-size: 12px;
+    }
+
+    .notice {
+      margin: 24px 0;
+      padding: 16px 18px;
+      border: 1px solid #e7b65d66;
+      border-radius: 12px;
+      background: #2b2118aa;
+      color: #ffe4af;
+      font-size: 13px;
+    }
+
+    .policy {
+      margin-bottom: 50px;
+      padding: clamp(22px, 5vw, 42px);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: linear-gradient(145deg, #0a142eeb, #070c1de8);
+    }
+
+    footer {
+      padding: 25px 0;
+      border-top: 1px solid var(--line);
+      color: #8fa3cb;
+      font-size: 12px;
+    }
+  </style>
 </head>
 
 <body>
+  <header>
+    <div class="wrap">
+      <a class="brand" href="/">ARCADIUM <span>LABS</span></a>
+      <a class="back" href="/">← Back to website</a>
+    </div>
+  </header>
 
-<header>
-    <div class="logo">ARCADIUM LABS</div>
-</header>
+  <main class="wrap">
+    <div class="hero">
+      <div class="kicker">Privacy & Transparency</div>
+      <h1>Privacy Policy</h1>
+      <p>
+        This policy describes how Arcadium Labs approaches personal
+        information in connection with its website and mobile games.
+      </p>
+      <p class="updated">Last updated: 12 October 2026</p>
+    </div>
 
-<div class="container">
-<div class="card">
+    <div class="notice">
+      <strong>Publisher review required:</strong>
+      Before publishing, confirm the actual data collected by each game,
+      all third-party SDKs, advertising and analytics services, the privacy
+      contact address and the disclosures in Google Play's Data safety
+      section. Remove or amend any statement that does not match the
+      actual implementation.
+    </div>
 
-<h1>Privacy Policy</h1>
+    <article class="policy">
+      <h2>1. Who We Are</h2>
+      <p>
+        “Arcadium Labs”, “we”, “us” or “our” refers to the publisher
+        responsible for the Arcadium Labs website and mobile games.
+        Our published games can be found on our
+        <a href="https://play.google.com/store/apps/dev?id=9123354764116988501"
+           target="_blank" rel="noopener noreferrer">
+          official Google Play developer page
+        </a>.
+      </p>
 
-<p><strong>Effective Date:</strong> June 2026</p>
+      <h2>2. Scope of This Policy</h2>
+      <p>
+        This policy applies to the Arcadium Labs website and, where
+        applicable, our mobile games. Individual games may use different
+        features, permissions and third-party services. Actual processing
+        depends on the game version, its configuration, the device and
+        the services enabled. Game-specific disclosures should be checked
+        against the relevant store listing and in-app notices.
+      </p>
 
-<p>
-Arcadium Labs develops and publishes mobile games and interactive entertainment experiences.
-This Privacy Policy explains how information is handled across all Arcadium Labs games,
-applications, websites, and related services.
-</p>
+      <h2>3. Information That May Be Processed</h2>
+      <p>Depending on the service and features enabled, information may include:</p>
+      <ul>
+        <li>
+          <strong>Information you provide:</strong>
+          information included in a support email or privacy request,
+          such as your reply address and description of the issue.
+        </li>
+        <li>
+          <strong>Technical information:</strong>
+          device model, operating-system version, app version, performance
+          information and crash diagnostics, if collected by the game
+          or its service providers.
+        </li>
+        <li>
+          <strong>Gameplay information:</strong>
+          progress, settings or gameplay events where a feature or service
+          stores or processes that information.
+        </li>
+        <li>
+          <strong>Advertising and analytics information:</strong>
+          ad impressions, interactions, advertising identifiers or usage
+          measurements if an advertising or analytics SDK is enabled.
+        </li>
+        <li>
+          <strong>Website technical information:</strong>
+          server logs and request information that may be processed by
+          the hosting provider to deliver, maintain and protect the site.
+        </li>
+      </ul>
+      <p>
+        This list does not mean every category is collected by every game.
+        The actual data practices must be verified for each published release.
+      </p>
 
-<h2>Information We Collect</h2>
+      <h2>4. How Information May Be Used</h2>
+      <p>
+        Where applicable, information may be used to provide game and
+        website functionality, maintain security, prevent abuse, diagnose
+        technical issues, respond to support requests, remember settings,
+        measure performance, display or measure advertisements and comply
+        with legal obligations.
+      </p>
 
-<p>
-Arcadium Labs does not require users to create accounts for most of its games and does not
-directly collect personal information through gameplay.
-</p>
+      <h2>5. Advertising, Analytics and Third-Party Services</h2>
+      <p>
+        Our games may integrate third-party services, such as Google Play
+        services, advertising providers, analytics tools or crash-reporting
+        SDKs. Those services may process information under their own privacy
+        terms and configurations. The services used, data categories,
+        purposes and available controls should be disclosed accurately in
+        the relevant game listing and in-app notices.
+      </p>
+      <p>
+        For information about Google's practices, visit
+        <a href="https://policies.google.com/privacy"
+           target="_blank" rel="noopener noreferrer">
+          Google's Privacy Policy
+        </a>.
+      </p>
 
-<p>
-Game progress, settings, high scores, unlocked content, and preferences may be stored locally
-on the user's device to support gameplay functionality and improve the user experience.
-</p>
+      <h2>6. Cookies and Similar Technologies</h2>
+      <p>
+        The website code provided with this policy does not intentionally
+        set its own tracking cookies or use browser local storage.
+        Hosting infrastructure or third-party resources may process
+        technical information independently. If analytics, advertising
+        pixels or non-essential cookies are added, this policy and any
+        required consent controls should be updated.
+      </p>
 
-<h2>Advertising Services</h2>
+      <h2>7. Sharing and Disclosure</h2>
+      <p>
+        Where applicable, information may be processed by service providers
+        acting on our behalf, shared when you request a service, disclosed
+        where required by law or used to protect users and our services.
+        We do not offer personal information for sale. This statement does
+        not override processing carried out by third parties under their
+        own terms.
+      </p>
 
-<p>
-Some Arcadium Labs games display advertisements through Google AdMob.
-</p>
+      <h2>8. Retention and Security</h2>
+      <p>
+        We aim to retain personal information only for as long as reasonably
+        necessary for its purpose, a support case, a security requirement
+        or a legal obligation. Information should then be deleted or
+        de-identified where appropriate. We use reasonable safeguards
+        suitable for the service, but no system can be guaranteed completely
+        secure.
+      </p>
 
-<p>
-Advertising providers may automatically collect certain information including:
-</p>
+      <h2>9. Children and Family Audiences</h2>
+      <p>
+        Age suitability and child-directed requirements vary by game.
+        We aim to handle children's information responsibly and configure
+        advertising, permissions and SDKs in accordance with applicable law
+        and platform policies. Parents or guardians with concerns should
+        use the support contact provided on the relevant Google Play listing.
+        Each game's target audience and child-safety requirements must be
+        reviewed before release.
+      </p>
 
-<ul>
-<li>Advertising identifiers</li>
-<li>Device information</li>
-<li>IP addresses</li>
-<li>Diagnostic information</li>
-<li>Ad interaction data</li>
-</ul>
+      <h2>10. Your Privacy Rights</h2>
+      <p>
+        Depending on your location and applicable law, you may have rights
+        to request access to, correction of or deletion of personal
+        information; object to or restrict certain processing; withdraw
+        consent; or complain to a relevant regulator. We may need to verify
+        your identity and may be unable to fulfil requests where a lawful
+        exception applies.
+      </p>
 
-<p>
-This information may be used to deliver advertisements, measure advertising performance,
-prevent fraud, and improve advertising services.
-</p>
+      <h2>11. South Africa and International Visitors</h2>
+      <p>
+        Where applicable, we aim to handle personal information consistently
+        with South Africa's Protection of Personal Information Act (POPIA),
+        the EU and UK General Data Protection Regulation (GDPR), and other
+        applicable privacy laws. Applicable rights and obligations depend
+        on the circumstances and services involved. This policy is not a
+        certification of legal compliance.
+      </p>
 
-<p>
-Google's Privacy Policy:
-<a href="https://policies.google.com/privacy">
-https://policies.google.com/privacy
-</a>
-</p>
+      <h2>12. International Processing</h2>
+      <p>
+        Hosting and third-party providers may process information in
+        countries other than the country where you live. Where required,
+        appropriate safeguards should be used for international transfers.
+        The providers and transfer arrangements used by each service
+        should be verified.
+      </p>
 
-<h2>Data Storage</h2>
+      <h2>13. Links to Other Services</h2>
+      <p>
+        Our website links to Google Play and may link to other third-party
+        services. Those services have their own privacy policies and terms.
+        Review the relevant provider's policy before submitting information
+        to it.
+      </p>
 
-<p>
-Where applicable, game progress and settings are stored locally on the user's device.
-Arcadium Labs does not maintain centralized databases containing player profiles for games
-that do not provide account-based functionality.
-</p>
+      <h2>14. Changes to This Policy</h2>
+      <p>
+        We may update this policy as our website, games, services or legal
+        requirements change. The updated version will be published on this
+        page with a revised date. Material changes should be communicated
+        where required by law or platform policy.
+      </p>
 
-<h2>Third-Party Services</h2>
+      <h2>15. Contact and Privacy Requests</h2>
+      <p>
+        For privacy questions or requests, use the developer contact shown
+        on the relevant
+        <a href="https://play.google.com/store/apps/dev?id=9123354764116988501"
+           target="_blank" rel="noopener noreferrer">
+          Arcadium Labs Google Play listing
+        </a>.
+        Before publication, confirm that this contact is monitored and
+        able to receive and handle privacy requests. If necessary, add a
+        dedicated privacy email address here.
+      </p>
+    </article>
+  </main>
 
-<p>
-Arcadium Labs games may utilize one or more of the following services:
-</p>
+  <footer>
+    <div class="wrap">
+      © <span id="year"></span> Arcadium Labs ·
+      <a href="/">Home</a> ·
+      <a href="https://play.google.com/store/apps/dev?id=9123354764116988501"
+         target="_blank" rel="noopener noreferrer">
+        Google Play Portfolio
+      </a>
+    </div>
+  </footer>
 
-<ul>
-<li>Google Play Services</li>
-<li>Google AdMob</li>
-<li>Google Play Billing</li>
-<li>Android Operating System Services</li>
-</ul>
-
-<h2>Children's Privacy</h2>
-
-<p>
-Arcadium Labs does not knowingly collect personal information from children.
-Where required, our games are designed to comply with Google Play Families Policies and
-applicable child protection regulations.
-</p>
-
-<h2>Security</h2>
-
-<p>
-We take reasonable measures to protect the integrity of our applications and services.
-However, no electronic storage or transmission method can be guaranteed to be completely secure.
-</p>
-
-<h2>International Users</h2>
-
-<p>
-Arcadium Labs products may be distributed globally through digital marketplaces.
-Third-party providers may process information in different countries according to their own
-privacy practices and legal obligations.
-</p>
-
-<h2>Your Rights</h2>
-
-<p>
-Depending on your jurisdiction, you may have rights regarding your personal information,
-including rights related to access, correction, deletion, restriction of processing, and
-objection to certain data uses.
-</p>
-
-<h2>Changes to This Privacy Policy</h2>
-
-<p>
-Arcadium Labs may update this Privacy Policy periodically to reflect legal, technical,
-or operational changes. Updates will be published on this page together with the revised
-effective date.
-</p>
-
-<h2>Contact Us</h2>
-
-<p>
-Arcadium Labs<br>
-Email: support@arcadiumlabs.co.za<br>
-Website: https://arcadium-labs-website.vercel.app
-</p>
-
-</div>
-</div>
-
-<div class="footer">
-© 2026 Arcadium Labs. All Rights Reserved.
-</div>
-
+  <script>
+    document.querySelector("#year").textContent =
+      new Date().getFullYear();
+  </script>
 </body>
 </html>
-```
