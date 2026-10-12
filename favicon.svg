@@ -1,33 +1,12 @@
 
-<svg xmlns="http://www.w3.org/2000/svg"
-     viewBox="0 0 64 64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="arcadium" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#50eaff"/>
-      <stop offset="48%" stop-color="#367bff"/>
-      <stop offset="100%" stop-color="#a45cff"/>
-    </linearGradient>
-    <linearGradient id="core" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#50eaff"/>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffe7a2"/>
+      <stop offset="100%" stop-color="#c79a35"/>
     </linearGradient>
   </defs>
-
-  <rect width="64" height="64" rx="14" fill="#030613"/>
-
-  <path d="M32 5 L59 54 L48 54 L32 25 L16 54 L5 54 Z"
-        fill="none"
-        stroke="url(#arcadium)"
-        stroke-width="5"
-        stroke-linejoin="round"/>
-
-  <path d="M22 44 L32 33 L42 44 L32 55 Z"
-        fill="#101d48"
-        stroke="url(#arcadium)"
-        stroke-width="2.5"/>
-
-  <path d="M32 37 L38 44 L32 51 L26 44 Z"
-        fill="url(#core)"/>
-
-  <circle cx="32" cy="44" r="3" fill="#ffffff"/>
+  <rect width="64" height="64" rx="15" fill="#080912"/>
+  <rect x="2" y="2" width="60" height="60" rx="13" fill="none" stroke="url(#gold)" stroke-opacity=".65" stroke-width="2"/>
+  <path d="M32 10 11 53h10l4-9h14l4 9h10L32 10Zm0 19 4 8h-8l4-8Z" fill="url(#gold)"/>
 </svg>
